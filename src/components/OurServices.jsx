@@ -11,7 +11,7 @@ export default function OurServices() {
                 </div>
                 <h2>
                   <a href="#">
-                    largest dealership <span> of</span> car
+                    largest dealership <span> of</span> telescope
                   </a>
                 </h2>
                 <p>

@@ -46,7 +46,7 @@ export default function Header() {
                     <a href="#service">service</a>
                   </li>
                   <li className="scroll">
-                    <a href="#featured-cars">featured telescopes</a>
+                    <a href="#featured-telescopes">featured telescopes</a>
                   </li>
                   <li className="scroll">
                     <a href="#new-cars">new telescopes</a>
@@ -144,7 +144,7 @@ export default function Header() {
                     {/* /.model-select-icon */}
                   </div>
                   <div className="single-model-search">
-                    <h2>car condition</h2>
+                    <h2>telescope condition</h2>
                     <div className="model-select-icon">
                       <select className="form-control">
                         <option value="default">condition</option>

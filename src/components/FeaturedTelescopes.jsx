@@ -1,6 +1,6 @@
 export default function FeaturedTelescopes() {
   return (
-    <section id="featured-cars" className="featured-cars">
+    <section id="featured-telescopes" className="featured-telescopes">
       <div className="container">
         <div className="section-header">
           <p>
@@ -9,13 +9,13 @@ export default function FeaturedTelescopes() {
           <h2>featured telescopes</h2>
         </div>
         {/*/.section-header*/}
-        <div className="featured-cars-content">
+        <div className="featured-telescopes-content">
           <div className="row">
             <div className="col-lg-3 col-md-4 col-sm-6">
-              <div className="single-featured-cars">
+              <div className="single-featured-telescopes">
                 <div className="featured-img-box">
-                  <div className="featured-cars-img">
-                    <img src="images/featured-cars/fc1.png" alt="cars" />
+                  <div className="featured-telescopes-img">
+                    <img src="images/featured-telescopes/fc1.png" alt="cars" />
                   </div>
                   <div className="featured-model-info">
                     <p>
@@ -26,7 +26,7 @@ export default function FeaturedTelescopes() {
                     </p>
                   </div>
                 </div>
-                <div className="featured-cars-txt">
+                <div className="featured-telescopes-txt">
                   <h2>
                     <a href="#">BMW 6-series gran coupe</a>
                   </h2>
@@ -39,10 +39,10 @@ export default function FeaturedTelescopes() {
               </div>
             </div>
             <div className="col-lg-3 col-md-4 col-sm-6">
-              <div className="single-featured-cars">
+              <div className="single-featured-telescopes">
                 <div className="featured-img-box">
-                  <div className="featured-cars-img">
-                    <img src="images/featured-cars/fc2.png" alt="cars" />
+                  <div className="featured-telescopes-img">
+                    <img src="images/featured-telescopes/fc2.png" alt="cars" />
                   </div>
                   <div className="featured-model-info">
                     <p>
@@ -53,7 +53,7 @@ export default function FeaturedTelescopes() {
                     </p>
                   </div>
                 </div>
-                <div className="featured-cars-txt">
+                <div className="featured-telescopes-txt">
                   <h2>
                     <a href="#">
                       chevrolet camaro <span>wmv20</span>
@@ -68,10 +68,10 @@ export default function FeaturedTelescopes() {
               </div>
             </div>
             <div className="col-lg-3 col-md-4 col-sm-6">
-              <div className="single-featured-cars">
+              <div className="single-featured-telescopes">
                 <div className="featured-img-box">
-                  <div className="featured-cars-img">
-                    <img src="images/featured-cars/fc3.png" alt="cars" />
+                  <div className="featured-telescopes-img">
+                    <img src="images/featured-telescopes/fc3.png" alt="cars" />
                   </div>
                   <div className="featured-model-info">
                     <p>
@@ -82,7 +82,7 @@ export default function FeaturedTelescopes() {
                     </p>
                   </div>
                 </div>
-                <div className="featured-cars-txt">
+                <div className="featured-telescopes-txt">
                   <h2>
                     <a href="#">
                       lamborghini <span>v520</span>
@@ -97,10 +97,10 @@ export default function FeaturedTelescopes() {
               </div>
             </div>
             <div className="col-lg-3 col-md-4 col-sm-6">
-              <div className="single-featured-cars">
+              <div className="single-featured-telescopes">
                 <div className="featured-img-box">
-                  <div className="featured-cars-img">
-                    <img src="images/featured-cars/fc4.png" alt="cars" />
+                  <div className="featured-telescopes-img">
+                    <img src="images/featured-telescopes/fc4.png" alt="cars" />
                   </div>
                   <div className="featured-model-info">
                     <p>
@@ -111,7 +111,7 @@ export default function FeaturedTelescopes() {
                     </p>
                   </div>
                 </div>
-                <div className="featured-cars-txt">
+                <div className="featured-telescopes-txt">
                   <h2>
                     <a href="#">
                       audi <span> a3</span> sedan
@@ -128,10 +128,10 @@ export default function FeaturedTelescopes() {
           </div>
           <div className="row">
             <div className="col-lg-3 col-md-4 col-sm-6">
-              <div className="single-featured-cars">
+              <div className="single-featured-telescopes">
                 <div className="featured-img-box">
-                  <div className="featured-cars-img">
-                    <img src="images/featured-cars/fc4.png" alt="cars" />
+                  <div className="featured-telescopes-img">
+                    <img src="images/featured-telescopes/fc4.png" alt="cars" />
                   </div>
                   <div className="featured-model-info">
                     <p>
@@ -142,7 +142,7 @@ export default function FeaturedTelescopes() {
                     </p>
                   </div>
                 </div>
-                <div className="featured-cars-txt">
+                <div className="featured-telescopes-txt">
                   <h2>
                     <a href="#">
                       infiniti <span>z5</span>
@@ -157,10 +157,10 @@ export default function FeaturedTelescopes() {
               </div>
             </div>
             <div className="col-lg-3 col-md-4 col-sm-6">
-              <div className="single-featured-cars">
+              <div className="single-featured-telescopes">
                 <div className="featured-img-box">
-                  <div className="featured-cars-img">
-                    <img src="images/featured-cars/fc5.png" alt="cars" />
+                  <div className="featured-telescopes-img">
+                    <img src="images/featured-telescopes/fc5.png" alt="cars" />
                   </div>
                   <div className="featured-model-info">
                     <p>
@@ -171,7 +171,7 @@ export default function FeaturedTelescopes() {
                     </p>
                   </div>
                 </div>
-                <div className="featured-cars-txt">
+                <div className="featured-telescopes-txt">
                   <h2>
                     <a href="#">
                       porsche <span>718</span> cayman
@@ -186,10 +186,10 @@ export default function FeaturedTelescopes() {
               </div>
             </div>
             <div className="col-lg-3 col-md-4 col-sm-6">
-              <div className="single-featured-cars">
+              <div className="single-featured-telescopes">
                 <div className="featured-img-box">
-                  <div className="featured-cars-img">
-                    <img src="images/featured-cars/fc7.png" alt="cars" />
+                  <div className="featured-telescopes-img">
+                    <img src="images/featured-telescopes/fc7.png" alt="cars" />
                   </div>
                   <div className="featured-model-info">
                     <p>
@@ -200,7 +200,7 @@ export default function FeaturedTelescopes() {
                     </p>
                   </div>
                 </div>
-                <div className="featured-cars-txt">
+                <div className="featured-telescopes-txt">
                   <h2>
                     <a href="#">
                       <span>bmw 8-</span>series coupe
@@ -215,10 +215,10 @@ export default function FeaturedTelescopes() {
               </div>
             </div>
             <div className="col-lg-3 col-md-4 col-sm-6">
-              <div className="single-featured-cars">
+              <div className="single-featured-telescopes">
                 <div className="featured-img-box">
-                  <div className="featured-cars-img">
-                    <img src="images/featured-cars/fc8.png" alt="cars" />
+                  <div className="featured-telescopes-img">
+                    <img src="images/featured-telescopes/fc8.png" alt="cars" />
                   </div>
                   <div className="featured-model-info">
                     <p>
@@ -229,7 +229,7 @@ export default function FeaturedTelescopes() {
                     </p>
                   </div>
                 </div>
-                <div className="featured-cars-txt">
+                <div className="featured-telescopes-txt">
                   <h2>
                     <a href="#">
                       BMW <span> x</span>series-6
