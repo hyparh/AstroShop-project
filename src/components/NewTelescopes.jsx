@@ -4,7 +4,7 @@ export default function NewTelescopes() {
       <div className="container">
         <div className="section-header">
           <p>
-            checkout <span>the</span> latest cars
+            checkout <span>the</span> latest telescopes
           </p>
           <h2>newest telescopes</h2>
         </div>
@@ -40,8 +40,7 @@ export default function NewTelescopes() {
                       <li>9x50 finderscope with quick release bracket to help accurately find objects</li>
                       <li>2" Star diagonal provides more comfortable viewing position when observing objects that are high in the sky</li>                   
                       <p className="new-cars-para2">
-                        Sed ut pers unde omnis iste natus error sit voluptatem
-                        accusantium doloremque laudantium.
+                      <b><h4>$ 10,999</h4></b>
                       </p>
                       <button
                         className="welcome-btn new-cars-btn"
@@ -86,8 +85,7 @@ export default function NewTelescopes() {
                       <li>Camera rotates 360° so you can find the right orientation</li>
                       <li>Vixen-type finder shoe so you can easily mount any finderscope</li>
                       <p className="new-cars-para2">
-                        Sed ut pers unde omnis iste natus error sit voluptatem
-                        accusantium doloremque laudantium.
+                      <b><h4>$ 3,775</h4></b>
                       </p>
                       <button
                         className="welcome-btn new-cars-btn"
@@ -129,8 +127,7 @@ export default function NewTelescopes() {
                       to be flexibly shifted by sliding the rods further in or out.
                       </p>
                       <p className="new-cars-para2">
-                        Sed ut pers unde omnis iste natus error sit voluptatem
-                        accusantium doloremque laudantium.
+                      <b><h4>$ 4,432</h4></b>
                       </p>
                       <button
                         className="welcome-btn new-cars-btn"

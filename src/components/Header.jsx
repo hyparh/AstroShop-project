@@ -91,34 +91,24 @@ export default function Header() {
               <div className="row">
                 <div className="col-md-offset-1 col-md-2 col-sm-12">
                   <div className="single-model-search">
-                    <h2>select year</h2>
+                    <h2>select type</h2>
                     <div className="model-select-icon">
                       <select className="form-control">
-                        <option value="default">year</option>
-                        {/* /.option*/}
-                        <option value={2018}>2018</option>
-                        {/* /.option*/}
-                        <option value={2017}>2017</option>
-                        {/* /.option*/}
-                        <option value={2016}>2016</option>
-                        {/* /.option*/}
+                        <option value="default">type</option>
+                        <option value={2018}>reflector</option>
+                        <option value={2017}>refractor</option>
                       </select>
                       {/* /.select*/}
                     </div>
                     {/* /.model-select-icon */}
                   </div>
                   <div className="single-model-search">
-                    <h2>body style</h2>
+                    <h2>goto control</h2>
                     <div className="model-select-icon">
                       <select className="form-control">
-                        <option value="default">style</option>
-                        {/* /.option*/}
-                        <option value="sedan">sedan</option>
-                        {/* /.option*/}
-                        <option value="van">van</option>
-                        {/* /.option*/}
-                        <option value="roadster">roadster</option>
-                        {/* /.option*/}
+                        <option value="default">push to</option>
+                        <option value="sedan">no</option>
+                        <option value="van">yes</option>
                       </select>
                       {/* /.select*/}
                     </div>
@@ -127,34 +117,29 @@ export default function Header() {
                 </div>
                 <div className="col-md-offset-1 col-md-2 col-sm-12">
                   <div className="single-model-search">
-                    <h2>select make</h2>
+                    <h2>type of build</h2>
                     <div className="model-select-icon">
                       <select className="form-control">
-                        <option value="default">make</option>
-                        {/* /.option*/}
-                        <option value="toyota">toyota</option>
-                        {/* /.option*/}
-                        <option value="holden">holden</option>
-                        {/* /.option*/}
-                        <option value="maecedes-benz">maecedes-benz.</option>
-                        {/* /.option*/}
+                        <option value="default">newton</option>
+                        <option value="toyota">schmidt-cassegrain</option>
+                        <option value="holden">achromat</option>
+                        <option value="maecedes-benz">apochromat</option>
+                        <option value="maecedes-benz">astrograph</option>
                       </select>
                       {/* /.select*/}
                     </div>
                     {/* /.model-select-icon */}
                   </div>
                   <div className="single-model-search">
-                    <h2>telescope condition</h2>
+                    <h2>aperture</h2>
                     <div className="model-select-icon">
                       <select className="form-control">
-                        <option value="default">condition</option>
-                        {/* /.option*/}
-                        <option value="something">something</option>
-                        {/* /.option*/}
-                        <option value="something">something</option>
-                        {/* /.option*/}
-                        <option value="something">something</option>
-                        {/* /.option*/}
+                        <option value="default">70 - 90 mm</option>
+                        <option value="something">114 - 130 mm</option>
+                        <option value="something">150 - 200 mm</option>
+                        <option value="something">280 - 305 mm</option>
+                        <option value="something">305 - 356 mm</option>
+                        <option value="something">&gt; 356 mm</option>
                       </select>
                       {/* /.select*/}
                     </div>
@@ -163,17 +148,13 @@ export default function Header() {
                 </div>
                 <div className="col-md-offset-1 col-md-2 col-sm-12">
                   <div className="single-model-search">
-                    <h2>select model</h2>
+                    <h2>mounting type</h2>
                     <div className="model-select-icon">
                       <select className="form-control">
-                        <option value="default">model</option>
-                        {/* /.option*/}
-                        <option value="kia-rio">kia-rio</option>
-                        {/* /.option*/}
-                        <option value="mitsubishi">mitsubishi</option>
-                        {/* /.option*/}
-                        <option value="ford">ford</option>
-                        {/* /.option*/}
+                        <option value="default">azimuthal</option>
+                        <option value="kia-rio">dobson</option>
+                        <option value="mitsubishi">equatorial</option>
+                        <option value="ford">no mount</option>
                       </select>
                       {/* /.select*/}
                     </div>
@@ -184,13 +165,13 @@ export default function Header() {
                     <div className="model-select-icon">
                       <select className="form-control">
                         <option value="default">price</option>
-                        {/* /.option*/}
-                        <option value="$0.00">$0.00</option>
-                        {/* /.option*/}
-                        <option value="$0.00">$0.00</option>
-                        {/* /.option*/}
-                        <option value="$0.00">$0.00</option>
-                        {/* /.option*/}
+                        <option value="$0.00">110 - 210 $</option>
+                        <option value="$0.00">210 - 320 $</option>
+                        <option value="$0.00">320 - 540 $</option>
+                        <option value="$0.00">540 - 1070 $</option>
+                        <option value="$0.00">1070 - 2140 $</option>
+                        <option value="$0.00">2140 - 5350 $</option>
+                        <option value="$0.00">&gt; 5350 $</option>
                       </select>
                       {/* /.select*/}
                     </div>
