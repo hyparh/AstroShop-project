@@ -24,15 +24,21 @@ export default function NewTelescopes() {
                     <div className="new-cars-txt">
                       <h2>
                         <a href="#">
-                          chevrolet camaro <span> za100</span>
+                        CGX-L Equatorial 1400 HD Telescope
                         </a>
                       </h2>
                       <p>
-                        Duis aute irure dolor in reprehenderit in voluptate
-                        velit esse cillum dolore eu fugiat nulla pariatur.
-                        Excepteur sint occaecat cupidatat non proident, sunt in
-                        culpa qui officia deserunt mollit anim id est laborum.
+                      You can count on Celestron Premier Select Dealers to
+                      offer an extensive assortment of Celestron products
+                      in stock for immediate delivery.
                       </p>
+                      <br></br>         
+                      <li>14" EdgeHD Optics</li>
+                      <li>Celestron premium StarBright XLT coatings</li>
+                      <li>CGX-L computerized Equatorial mount</li>
+                      <li>Heavy Duty stainless steel tripod adjustable from 38 - 55</li>
+                      <li>9x50 finderscope with quick release bracket to help accurately find objects</li>
+                      <li>2" Star diagonal provides more comfortable viewing position when observing objects that are high in the sky</li>                   
                       <p className="new-cars-para2">
                         Sed ut pers unde omnis iste natus error sit voluptatem
                         accusantium doloremque laudantium.
@@ -65,14 +71,20 @@ export default function NewTelescopes() {
                   <div className="col-md-5 col-sm-12">
                     <div className="new-cars-txt">
                       <h2>
-                        <a href="#">BMW series-3 wagon</a>
+                        <a href="#">Apochromatic refractor Pro APO 94/517 Triplet ED CEM26 LiteRoc</a>
                       </h2>
                       <p>
-                        Duis aute irure dolor in reprehenderit in voluptate
-                        velit esse cillum dolore eu fugiat nulla pariatur.
-                        Excepteur sint occaecat cupidatat non proident, sunt in
-                        culpa qui officia deserunt mollit anim id est laborum.
+                      This telescope consists of an Omegon Pro 94/517 APO triplet 
+                      ED OTA and an iOptron CEM26 mount. You receive a pure-colour 
+                      ED lens and a compact yet powerful mount - a perfect first 
+                      introduction to the league of professional astrophotographers.
                       </p>
+                      <br></br>
+                      <li>94mm triplet ED Apo with two ED lenses with extremely good correction for a colour-pure image with good contrast</li>
+                      <li>Retractable dew cap for easy transport</li>
+                      <li>3" focuser with a 1:10 reduction ratio: Easily focus larger and heavier cameras with high precision.</li>
+                      <li>Camera rotates 360° so you can find the right orientation</li>
+                      <li>Vixen-type finder shoe so you can easily mount any finderscope</li>
                       <p className="new-cars-para2">
                         Sed ut pers unde omnis iste natus error sit voluptatem
                         accusantium doloremque laudantium.
@@ -105,13 +117,16 @@ export default function NewTelescopes() {
                   <div className="col-md-5 col-sm-12">
                     <div className="new-cars-txt">
                       <h2>
-                        <a href="#">ferrari 488 superfast</a>
+                        <a href="#">Dobson telescope N 406/1800 Skyliner FlexTube BD DOB GoTo</a>
                       </h2>
                       <p>
-                        Duis aute irure dolor in reprehenderit in voluptate
-                        velit esse cillum dolore eu fugiat nulla pariatur.
-                        Excepteur sint occaecat cupidatat non proident, sunt in
-                        culpa qui officia deserunt mollit anim id est laborum.
+                      A large aperture for a little money - that was always the 
+                      main idea when acquiring a Dobsonian telescope. With their 
+                      BlackDiamond Dobsonian, Sky-Watcher have created a classic 
+                      with a new slant. The new, patented, a novel patented 
+                      sliding rod design makes it is particularly easy to transport.
+                      Another advantage of this is that it allows the focus point
+                      to be flexibly shifted by sliding the rods further in or out.
                       </p>
                       <p className="new-cars-para2">
                         Sed ut pers unde omnis iste natus error sit voluptatem
