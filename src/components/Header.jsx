@@ -87,7 +87,7 @@ export default function Header() {
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            <div className="model-search-content">
+          <div className="model-search-content">
               <div className="row">
                 <div className="col-md-offset-1 col-md-2 col-sm-12">
                   <div className="single-model-search">

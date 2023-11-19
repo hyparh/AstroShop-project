@@ -1,5 +1,7 @@
 import Blog from "./Blog";
 import Brand from "./components/Brand";
+import LogIn from "./components/auth/LogIn";
+import Register from "./components/auth/Register";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import ClientsSay from "./components/ClientsSay";
@@ -11,6 +13,8 @@ function App() {
   return (
     <>
       <Header />
+      <LogIn />
+      <Register />
       <OurServices />
       <NewTelescopes />
       <FeaturedTelescopes />
