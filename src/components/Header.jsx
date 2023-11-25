@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function Header() {
   return (
     <section id="home" className="welcome-hero">
@@ -79,15 +81,17 @@ export default function Header() {
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
-          <button className="welcome-btn" onclick="window.location.href='#'">
-            contact us
-          </button>
+          <Link to="/contact-us">
+            <button className="welcome-btn">
+              contact us
+            </button>
+          </Link>
         </div>
       </div>
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-          <div className="model-search-content">
+            <div className="model-search-content">
               <div className="row">
                 <div className="col-md-offset-1 col-md-2 col-sm-12">
                   <div className="single-model-search">
