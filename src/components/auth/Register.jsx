@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Popup from "reactjs-popup";
 import { auth } from "../../firebase";
+import { toast } from "react-toastify";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const Register = () => {
@@ -12,15 +13,34 @@ const Register = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredentials) => {
         console.log(userCredentials);
+        toast.success("Registration successful!", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       })
       .catch((error) => {
-        console.log(error);
+        toast.error(`Registration failed: ${error.message}`, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       });
   };
 
   return (
     <Popup trigger={<button className="button"> Register </button>} modal>
-      <div className="sign-in-container">
+      <div className="register-form-container">
         <form onSubmit={onRegister}>
           <label>Create Account</label>
           <br></br>

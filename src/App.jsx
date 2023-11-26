@@ -21,7 +21,7 @@ function App() {
   const notify = () => {
     toast.success("Test Toastify", {
       position: "top-center",
-      autoClose: 2000,
+      autoClose: 2500,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -39,7 +39,7 @@ function App() {
       <ToastContainer
         position="top-center"
         transition={Slide}
-        autoClose={2000}
+        autoClose={2500}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Popup from "reactjs-popup";
 import { auth } from "../../firebase";
+import { toast } from "react-toastify";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 const LogIn = () => {
@@ -12,15 +13,34 @@ const LogIn = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredentials) => {
         console.log(userCredentials);
+        toast.success("Login successful!", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       })
       .catch((error) => {
-        console.log(error);
+        toast.error(`Login failed: ${error.message}`, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       });
   };
 
   return (
     <Popup trigger={<button className="button"> Login </button>} modal>
-      <div className="log-in-container">
+      <div className="login-form-container">
         <form onSubmit={onLogIn}>
           <label for="email">Log In to your Account</label>
           <br></br>

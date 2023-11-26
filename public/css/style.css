@@ -322,6 +322,30 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
 
 /*.single-model-search*/
 
+/* ----------------------
+     Authentication
+---------------------- */
+
+@media screen and (min-width: 600px) {
+    .register-form-container {
+      background-color: rgb(163, 0, 0);
+      padding: 5rem;
+      border: 1px solid rgb(29, 4, 4);
+      border-radius: 10px;
+      margin: 0.5rem;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .login-form-container {
+      background-color: rgb(163, 0, 0);
+      padding: 5rem;
+      border: 1px solid rgb(29, 4, 4);
+      border-radius: 10px;
+      margin: 0.5rem;
+    }
+}
+
 /*-------------------------------------
         5. Service 
 --------------------------------------*/
