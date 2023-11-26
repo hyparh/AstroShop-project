@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import LogIn from "./auth/LogIn";
+import Register from "./auth/Register";
 
 export default function Header() {
   return (
@@ -44,6 +46,16 @@ export default function Header() {
                   <li className=" scroll active">
                     <a href="#home">home</a>
                   </li>
+                  <li>
+                    <a>
+                      <LogIn />
+                    </a>
+                  </li>
+                  <li>
+                    <a>
+                      <Register />
+                    </a>
+                  </li>
                   <li className="scroll">
                     <a href="#service">service</a>
                   </li>
@@ -82,9 +94,7 @@ export default function Header() {
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
           <Link to="/contact-us">
-            <button className="welcome-btn">
-              contact us
-            </button>
+            <button className="welcome-btn">contact us</button>
           </Link>
         </div>
       </div>

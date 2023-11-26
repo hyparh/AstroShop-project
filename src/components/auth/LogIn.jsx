@@ -39,7 +39,7 @@ const LogIn = () => {
   };
 
   return (
-    <Popup trigger={<button className="button"> Login </button>} modal>
+    <Popup trigger={<button className="button"> LOGIN </button>} modal>
       <div className="login-form-container">
         <form onSubmit={onLogIn}>
           <label for="email">Log In to your Account</label>

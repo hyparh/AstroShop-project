@@ -39,7 +39,7 @@ const Register = () => {
   };
 
   return (
-    <Popup trigger={<button className="button"> Register </button>} modal>
+    <Popup trigger={<button className="button"> REGISTER </button>} modal>
       <div className="register-form-container">
         <form onSubmit={onRegister}>
           <label>Create Account</label>
