@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Popup from "reactjs-popup";
 import { auth } from "../../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
@@ -18,25 +19,27 @@ const LogIn = () => {
   };
 
   return (
-    <div className="log-in-container">
-      <form onSubmit={onLogIn}>
-        <label for="email">Log In to your Account</label>
-        <br></br>
-        <input
-          type="email"
-          placeholder="Enter your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        ></input>
-        <input
-          type="password"
-          placeholder="Enter your password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        ></input>
-        <button type="submit">Log In</button>
-      </form>
-    </div>
+    <Popup trigger={<button className="button"> Login </button>} modal>
+      <div className="log-in-container">
+        <form onSubmit={onLogIn}>
+          <label for="email">Log In to your Account</label>
+          <br></br>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          ></input>
+          <input
+            type="password"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          ></input>
+          <button type="submit">Log In</button>
+        </form>
+      </div>
+    </Popup>
   );
 };
 

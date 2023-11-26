@@ -11,16 +11,17 @@ import NewTelescopes from "./components/NewTelescopes";
 import FeaturedTelescopes from "./components/FeaturedTelescopes";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Slide } from "react-toastify";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import ContactUs from "./components/ContactUs";
 
 function App() {
-  const [hideContent, setHideContent] = useState(false);
+  //const [hideContent, setHideContent] = useState(false);
 
   const notify = () => {
-    toast.success("🦄 Wow so easy!", {
+    toast.success("Test Toastify", {
       position: "top-center",
-      autoClose: 5000,
+      autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -33,27 +34,35 @@ function App() {
   return (
     <Router>
       <button onClick={notify}>Notify !</button>
-      <button onClick={() => setHideContent(!hideContent)}>
-        Toggle Content
-      </button>
       <Header />
+
+      <ToastContainer
+        position="top-center"
+        transition={Slide}
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+
       <Routes>
-        <Route path="contact-us" element={hideContent ? null : <ContactUs />} />
+        <Route path="contact-us" element={<ContactUs />} />
       </Routes>
-      {!hideContent && (
-        <>
-          <LogIn />
-          <Register />
-          <OurServices />
-          <NewTelescopes />
-          <FeaturedTelescopes />
-          <ClientsSay />
-          <Brand />
-          <Blog />
-        </>
-      )}
+      <LogIn />
+      <Register />
+      <OurServices />
+      <NewTelescopes />
+      <FeaturedTelescopes />
+      <ClientsSay />
+      <Brand />
+      <Blog />
+
       <Footer />
-      <ToastContainer />
     </Router>
   );
 }
