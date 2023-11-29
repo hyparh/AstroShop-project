@@ -1,8 +1,16 @@
 import Blog from "./Blog";
-import React, { useState } from "react";
+import { db } from "./firebase";
+import React, { useState, useEffect } from "react";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  onSnapshot,
+  doc,
+} from "firebase/firestore";
 import Brand from "./components/Brand";
-import LogIn from "./components/auth/LogIn";
-import Register from "./components/auth/Register";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import ClientsSay from "./components/ClientsSay";
@@ -16,24 +24,22 @@ import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import ContactUs from "./components/ContactUs";
 
 function App() {
-  //const [hideContent, setHideContent] = useState(false);
 
-  const notify = () => {
-    toast.success("Test Toastify", {
-      position: "top-center",
-      autoClose: 2500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
+  const [newBrand, setNewBrand] = useState("");
+  const [newAperture, setNewAperture] = useState(0);
+
+  const [telescopes, setTelescopes] = useState([]);
+  const telescopesCollectionRef = collection(db, "telescopes");
+
+  const createTelescope = async () => {
+    await addDoc(telescopesCollectionRef, {
+      brand: newBrand,
+      aperture: Number(newAperture),
     });
   };
 
   return (
     <Router>
-      <button onClick={notify}>Notify !</button>
       <Header />
 
       <ToastContainer
@@ -53,8 +59,6 @@ function App() {
       <Routes>
         <Route path="contact-us" element={<ContactUs />} />
       </Routes>
-      <LogIn />
-      <Register />
       <OurServices />
       <NewTelescopes />
       <FeaturedTelescopes />

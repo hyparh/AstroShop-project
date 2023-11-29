@@ -7,12 +7,17 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 const LogIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loginSuccess, setLoginSuccess] = useState(false);
+  const [userDisplayEmail, setUserDisplayEmail] = useState("");
 
   const onLogIn = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredentials) => {
-        console.log(userCredentials);
+        const user = userCredentials.user;
+        setUserDisplayEmail(user.email || "User");
+        console.log(user.email);
+        setLoginSuccess(true);
         toast.success("Login successful!", {
           position: "top-center",
           autoClose: 3000,
@@ -39,10 +44,17 @@ const LogIn = () => {
   };
 
   return (
-    <Popup trigger={<button className="button"> LOGIN </button>} modal>
-      <div className="login-form-container">
+    <Popup
+      trigger={<button className="button"> LOGIN </button>}
+      modal
+      // open={!loginSuccess} // Close the popup when login is successful
+      // closeOnDocumentClick={!loginSuccess}
+    >
+      <div className="auth-form-container">
         <form onSubmit={onLogIn}>
-          <label for="email">Log In to your Account</label>
+          <label className="auth-title" for="email">
+            ENTER YOUR CREDENTIALS
+          </label>
           <br></br>
           <input
             type="email"
@@ -56,9 +68,14 @@ const LogIn = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></input>
-          <button type="submit">Log In</button>
+          <br></br>
+          <button className="login-btn" type="submit">
+            Log In
+          </button>
         </form>
       </div>
+      {/* Display user's name if available */}
+      {userDisplayEmail && <div className="user-display">Welcome, {userDisplayEmail}!</div>}
     </Popup>
   );
 };

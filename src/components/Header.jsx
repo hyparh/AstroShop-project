@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import LogIn from "./auth/LogIn";
 import Register from "./auth/Register";
@@ -10,7 +11,7 @@ export default function Header() {
         <div className="header-area">
           {/* Start Navigation */}
           <nav
-            className="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy"
+            className="navbar navbar-default bootsnav navbar-sticky navbar-scrollspy"
             data-minus-value-desktop={70}
             data-minus-value-mobile={55}
             data-speed={1000}

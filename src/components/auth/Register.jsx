@@ -40,9 +40,9 @@ const Register = () => {
 
   return (
     <Popup trigger={<button className="button"> REGISTER </button>} modal>
-      <div className="register-form-container">
+      <div className="auth-form-container">
         <form onSubmit={onRegister}>
-          <label>Create Account</label>
+          <label className="auth-title">CREATE ACCOUNT</label>
           <br></br>
           <input
             type="email"
@@ -57,7 +57,7 @@ const Register = () => {
             onChange={(e) => setPassword(e.target.value)}
           ></input>
           <br></br>
-          <button type="submit">Register</button>
+          <button className="register-btn" type="submit">Register</button>
         </form>
       </div>
     </Popup>
