@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import LogIn from "./auth/LogIn";
 import Register from "./auth/Register";
+import CreateTelescope from "./crud/CreateTelescope";
 
 export default function Header() {
   return (
@@ -55,6 +56,11 @@ export default function Header() {
                   <li>
                     <a>
                       <Register />
+                    </a>
+                  </li>
+                  <li>
+                    <a>
+                      <CreateTelescope />
                     </a>
                   </li>
                   <li className="scroll">
