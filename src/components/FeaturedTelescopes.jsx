@@ -4,9 +4,9 @@ export default function FeaturedTelescopes() {
       <div className="container">
         <div className="section-header">
           <p>
-            checkout <span>the</span> featured telescopes
+            checkout <span>the</span> telescopes catalog
           </p>
-          <h2>featured telescopes</h2>
+          <h2>telescopes catalog</h2>
         </div>
         {/*/.section-header*/}
         <div className="featured-telescopes-content">

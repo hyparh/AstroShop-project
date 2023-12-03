@@ -6,7 +6,7 @@ export default function NewTelescopes() {
           <p>
             checkout <span>the</span> latest telescopes
           </p>
-          <h2>newest telescopes</h2>
+          <h2>newly added</h2>
         </div>
         {/*/.section-header*/}
         <div className="new-cars-content">

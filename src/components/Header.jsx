@@ -82,10 +82,10 @@ export default function Header() {
                     <a href="#service">service</a>
                   </li>
                   <li className="scroll">
-                    <a href="#featured-telescopes">featured telescopes</a>
+                    <a href="#featured-telescopes">telescopes catalog</a>
                   </li>
                   <li className="scroll">
-                    <a href="#new-cars">new telescopes</a>
+                    <a href="#new-cars">newly added</a>
                   </li>
                   <li className="scroll">
                     <a href="#brand">brands</a>

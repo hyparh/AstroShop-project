@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Popup from "reactjs-popup";
-import { db } from "../../firebase";
+import { db, auth } from "../../firebase";
 import {
   collection,
   getDocs,
@@ -14,15 +14,28 @@ import {
 function CreateTelescope() {
   const [newBrand, setNewBrand] = useState("");
   const [newAperture, setNewAperture] = useState(0);
-
   const [telescopes, setTelescopes] = useState([]);
   const telescopesCollectionRef = collection(db, "telescopes");
 
   const createTelescopes = async () => {
-    await addDoc(telescopesCollectionRef, {
-      brand: newBrand,
-      aperture: Number(newAperture),
-    });
+    const user = auth.currentUser;
+
+    if (user) {
+      try {
+        const newTelescope = {
+          brand: newBrand,
+          aperture: Number(newAperture),
+          userId: user.uid,
+        };
+
+        const docRef = await addDoc(telescopesCollectionRef, newTelescope);
+
+      } catch (error) {
+        console.error("Error creating telescope:", error.message);
+      }
+    } else {
+      console.error("User is not logged in.");
+    }
   };
 
   const updateTelescope = async (id, aperture) => {
