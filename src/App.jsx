@@ -43,7 +43,7 @@ function App() {
       <Header />
 
       <ToastContainer
-        position="top-center"
+        position="top-center" 
         transition={Slide}
         autoClose={2500}
         hideProgressBar={false}

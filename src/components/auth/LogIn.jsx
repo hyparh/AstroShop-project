@@ -4,7 +4,7 @@ import { auth } from "../../firebase";
 import { toast } from "react-toastify";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
-const LogIn = () => {
+const LogIn = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginSuccess, setLoginSuccess] = useState(false);
@@ -14,10 +14,15 @@ const LogIn = () => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredentials) => {
-        const user = userCredentials.user;
-        setUserDisplayEmail(user.email || "User");
-        console.log(user.email);
+        const userData = userCredentials.user;
+        setUserDisplayEmail(userData.email || "User");
+        console.log(userData.email);
         setLoginSuccess(true);
+
+        if (onLogin) {
+          onLogin(userData);
+        }
+
         toast.success("Login successful!", {
           position: "top-center",
           autoClose: 3000,

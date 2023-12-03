@@ -5,6 +5,14 @@ import Register from "./auth/Register";
 import CreateTelescope from "./crud/CreateTelescope";
 
 export default function Header() {
+  const [user, setUser] = useState(null);
+
+  const updateUser = (userData) => {
+    setUser(userData);
+  };
+
+  console.log(user);
+
   return (
     <section id="home" className="welcome-hero">
       {/* top-area Start */}
@@ -48,21 +56,28 @@ export default function Header() {
                   <li className=" scroll active">
                     <a href="#home">home</a>
                   </li>
-                  <li>
-                    <a>
-                      <LogIn />
-                    </a>
-                  </li>
-                  <li>
-                    <a>
-                      <Register />
-                    </a>
-                  </li>
-                  <li>
-                    <a>
-                      <CreateTelescope />
-                    </a>
-                  </li>
+                  {user  ? (
+                    <>
+                      <li>
+                        <a>
+                          <CreateTelescope />
+                        </a>
+                      </li>
+                    </>
+                  ) : (
+                    <>
+                      <li>
+                        <a>
+                          <LogIn onLogin={updateUser} />
+                        </a>
+                      </li>
+                      <li>
+                        <a>
+                          <Register onLogin={updateUser} />
+                        </a>
+                      </li>
+                    </>
+                  )}
                   <li className="scroll">
                     <a href="#service">service</a>
                   </li>
