@@ -355,15 +355,29 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
     font-size: 18px;
   }
 
-@media screen and (min-width: 600px) {
-    .create-form-container {
-      background-color: rgb(142, 117, 199);
-      padding: 5rem;
-      border: 1px solid rgb(22, 29, 4);
-      border-radius: 10px;
-      margin: 0.5rem;
-      box-shadow: 0 0 0 100000px rgba(0, 0, 0, .5);
-    }
+.create-form-container {
+    background-color: rgb(142, 117, 199);
+    padding: 5rem;
+    border: 1px solid rgb(22, 29, 4);
+    border-radius: 10px;
+    margin: 0.5rem;
+    box-shadow: 0 0 0 100000px rgba(0, 0, 0, .5);
+}
+
+.create-form-container select,
+.create-form-container input {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.create-form-container button {
+    margin-top: 1rem;
+    border: none;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #2200e2;
 }
 
 /*-------------------------------------

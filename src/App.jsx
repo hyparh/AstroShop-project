@@ -43,7 +43,7 @@ function App() {
       <Header />
 
       <ToastContainer
-        position="top-center" 
+        position="top-center"
         transition={Slide}
         autoClose={2500}
         hideProgressBar={false}
@@ -57,7 +57,7 @@ function App() {
       />
 
       <Routes>
-        <Route path="contact-us" element={<ContactUs />} />
+        <Route path="/contact-us" element={<ContactUs />} />
       </Routes>
       <OurServices />
       <NewTelescopes />

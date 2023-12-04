@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { getAuth, signOut } from "firebase/auth";
 import LogIn from "./auth/LogIn";
 import Register from "./auth/Register";
 import CreateTelescope from "./crud/CreateTelescope";
+import LogOut from "./auth/LogOut";
 
 export default function Header() {
   const [user, setUser] = useState(null);
@@ -10,8 +13,6 @@ export default function Header() {
   const updateUser = (userData) => {
     setUser(userData);
   };
-
-  console.log(user);
 
   return (
     <section id="home" className="welcome-hero">
@@ -56,11 +57,16 @@ export default function Header() {
                   <li className=" scroll active">
                     <a href="#home">home</a>
                   </li>
-                  {user  ? (
+                  {user ? (
                     <>
                       <li>
                         <a>
                           <CreateTelescope />
+                        </a>
+                      </li>
+                      <li>
+                        <a>
+                          <LogOut onLogout={updateUser}/>
                         </a>
                       </li>
                     </>

@@ -16,45 +16,21 @@ const LogIn = ({ onLogin }) => {
       .then((userCredentials) => {
         const userData = userCredentials.user;
         setUserDisplayEmail(userData.email || "User");
-        console.log(userData.email);
         setLoginSuccess(true);
 
         if (onLogin) {
           onLogin(userData);
         }
 
-        toast.success("Login successful!", {
-          position: "top-center",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
+        toast.success("Login successful!");
       })
       .catch((error) => {
-        toast.error(`Login failed: ${error.message}`, {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
+        toast.error(`Login failed: ${error.message}`);
       });
   };
 
   return (
-    <Popup
-      trigger={<button className="button"> LOGIN </button>}
-      modal
-      // open={!loginSuccess} // Close the popup when login is successful
-      // closeOnDocumentClick={!loginSuccess}
-    >
+    <Popup trigger={<button className="button"> LOGIN </button>} modal>
       <div className="auth-form-container">
         <form onSubmit={onLogIn}>
           <label className="auth-title" for="email">
@@ -80,7 +56,9 @@ const LogIn = ({ onLogin }) => {
         </form>
       </div>
       {/* Display user's name if available */}
-      {userDisplayEmail && <div className="user-display">Welcome, {userDisplayEmail}!</div>}
+      {userDisplayEmail && (
+        <div className="user-display">Welcome, {userDisplayEmail}!</div>
+      )}
     </Popup>
   );
 };

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import Popup from "reactjs-popup";
 import { db, auth } from "../../firebase";
 import {
@@ -10,13 +11,19 @@ import {
   onSnapshot,
   doc,
 } from "firebase/firestore";
-import { telescopeTypes, buildTypes, mountingTypes, gotoControls } from "./Constants";
+import {
+  telescopeTypes,
+  buildTypes,
+  mountingTypes,
+  gotoControls,
+} from "./Constants";
 
 function CreateTelescope() {
   const [newType, setNewType] = useState("");
   const [newBuildType, setNewBuildType] = useState("");
   const [newMountingType, setNewMountingType] = useState("");
   const [newGotoControl, setNewGotoControl] = useState("");
+  const [newImage, setNewImage] = useState("");
   const [newAperture, setNewAperture] = useState(0);
   const [newPrice, setNewPrice] = useState(0);
   const [telescopes, setTelescopes] = useState([]);
@@ -32,17 +39,34 @@ function CreateTelescope() {
           mountingType: newMountingType,
           buildType: newBuildType,
           gotoControl: newGotoControl,
+          image: newImage,
           aperture: Number(newAperture),
           price: Number(newPrice),
           userId: user.uid,
         };
 
+        if (
+          !newType ||
+          !newMountingType ||
+          !newBuildType ||
+          !newGotoControl ||
+          (!newImage || !isNaN(Number(newImage))) ||
+          isNaN(Number(newAperture)) ||
+          isNaN(Number(newPrice))
+        ) {
+          toast.error("Please fill in all fields with valid values");
+          return;
+        }
+
         const docRef = await addDoc(telescopesCollectionRef, newTelescope);
+        console.log(docRef);
+
+        toast.success("Telescope successfully created!");
       } catch (error) {
-        console.error("Error creating telescope:", error.message);
+        toast.error("Error creating telescope:", error.message);
       }
     } else {
-      console.error("User is not logged in.");
+      toast.error("User is not logged in");
     }
   };
 
@@ -127,6 +151,12 @@ function CreateTelescope() {
           ))}
         </select>
         <input
+          placeholder="Image URL or file path"
+          onChange={(event) => {
+            setNewImage(event.target.value);
+          }}
+        ></input>
+        <input
           placeholder="Aperture in mm..."
           onChange={(event) => {
             setNewAperture(event.target.value);
@@ -145,6 +175,7 @@ function CreateTelescope() {
         {telescopes.map((telescope) => {
           return (
             <div key={telescope.id}>
+              <img>{telescope.image}</img>
               <h1>Type: {telescope.type}</h1>
               <h1>Build type: {telescope.buildType}</h1>
               <h1>Aperture: {telescope.aperture}</h1>
