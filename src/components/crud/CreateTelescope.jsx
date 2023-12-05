@@ -24,6 +24,7 @@ function CreateTelescope() {
   const [newMountingType, setNewMountingType] = useState("");
   const [newGotoControl, setNewGotoControl] = useState("");
   const [newImage, setNewImage] = useState("");
+  const [newDescription, setNewDescription] = useState("");
   const [newAperture, setNewAperture] = useState(0);
   const [newPrice, setNewPrice] = useState(0);
   const [telescopes, setTelescopes] = useState([]);
@@ -40,6 +41,7 @@ function CreateTelescope() {
           buildType: newBuildType,
           gotoControl: newGotoControl,
           image: newImage,
+          description: newDescription,
           aperture: Number(newAperture),
           price: Number(newPrice),
           userId: user.uid,
@@ -50,7 +52,8 @@ function CreateTelescope() {
           !newMountingType ||
           !newBuildType ||
           !newGotoControl ||
-          (!newImage || !isNaN(Number(newImage))) ||
+          !newImage ||
+          !isNaN(Number(newImage)) ||
           isNaN(Number(newAperture)) ||
           isNaN(Number(newPrice))
         ) {
@@ -168,6 +171,12 @@ function CreateTelescope() {
             setNewPrice(event.target.value);
           }}
         ></input>
+        <textarea className="description"
+          placeholder="Description..."
+          onChange={(event) => {
+            setNewDescription(event.target.value);
+          }}
+        ></textarea>
         <br></br>
         <button className="create-btn" onClick={createTelescopes}>
           Create Telescope

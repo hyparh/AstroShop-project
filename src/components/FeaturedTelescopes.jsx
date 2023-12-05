@@ -40,9 +40,9 @@ export default function FeaturedTelescopes() {
                     </div>
                     <div className="featured-model-info">
                       <p>
-                        model: {telescope.type}{" "}
+                        type: {telescope.type}{" "}
                         <span className="featured-mi-span">
-                          {telescope.aperture} mi
+                          {telescope.aperture} mm
                         </span>
                         {/* Include other telescope properties as needed */}
                       </p>

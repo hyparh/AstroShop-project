@@ -380,6 +380,13 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
     color: #2200e2;
 }
 
+.description {
+    width: 300px;
+    height: 100px;
+    padding-bottom: 50pt;
+    word-break: break-word;
+  }
+
 /*-------------------------------------
         5. Service 
 --------------------------------------*/
