@@ -387,6 +387,35 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
     word-break: break-word;
   }
 
+/* ----------------------
+     Telescopes catalog
+---------------------- */
+
+.description-catalog {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Number of lines to show */
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+/* ----------------------
+     Carousel telescopes
+---------------------- */
+
+.slider-container {
+    width: 80%; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the container horizontally */
+}
+  
+.slider-item {
+    text-align: center; /* Center the content inside each slide */
+}
+
+.telescope-price {
+    text-align: center;
+}
+
 /*-------------------------------------
         5. Service 
 --------------------------------------*/

@@ -1,156 +1,136 @@
+import React, { useState, useEffect } from "react";
+import { db } from "../firebase";
+import { collection, getDocs, orderBy, limit } from "firebase/firestore";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 export default function NewTelescopes() {
+  const [newTelescopes, setNewTelescopes] = useState([]);
+
+  useEffect(() => {
+    const fetchNewTelescopes = async () => {
+      const telescopesCollectionRef = collection(db, "telescopes");
+      const telescopesSnapshot = await getDocs(telescopesCollectionRef);
+      const telescopesData = telescopesSnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      setNewTelescopes(telescopesData);
+    };
+
+    fetchNewTelescopes();
+  }, []);
+
+  const settings = {
+    centerMode: true,
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
+  // useEffect(() => {
+  //   const fetchNewTelescopes = async () => {
+  //     const telescopesCollectionRef = collection(db, "telescopes");
+  //     const query = orderBy(telescopesCollectionRef, "timestamp", "desc");
+  //     const limitedQuery = limit(query, 3);
+
+  //     console.log("Inside useEffect");
+
+  //     const telescopesSnapshot = await getDocs(limitedQuery);
+  //     const telescopesData = telescopesSnapshot.docs.map((doc) => ({
+  //       id: doc.id,
+  //       ...doc.data(),
+  //     }));
+
+  //     setNewTelescopes(telescopesData);
+  //   };
+
+  //   fetchNewTelescopes();
+  // }, []);
+
   return (
-    <section id="new-cars" className="new-cars">
-      <div className="container">
-        <div className="section-header">
-          <p>
-            checkout <span>the</span> latest telescopes
-          </p>
-          <h2>newly added</h2>
+    <Slider {...settings}>
+      {newTelescopes.map((telescope) => (
+        <div className="slider-container">
+          <img src={telescope.image} alt="img" />
+          <h3>{telescope.type}</h3>
+          <h3>{telescope.price}</h3>
+          <h3>{telescope.userId}</h3>
         </div>
-        {/*/.section-header*/}
-        <div className="new-cars-content">
-          <div className="owl-carousel owl-theme" id="new-cars-carousel">
-            <div className="new-cars-item">
-              <div className="single-new-cars-item">
-                <div className="row">
-                  <div className="col-md-7 col-sm-12">
-                    <div className="new-cars-img">
-                      <img src="images/new-cars-model/ncm1.png" alt="img" />
-                    </div>
-                    {/*/.new-cars-img*/}
-                  </div>
-                  <div className="col-md-5 col-sm-12">
-                    <div className="new-cars-txt">
-                      <h2>
-                        <a href="#">
-                        CGX-L Equatorial 1400 HD Telescope
-                        </a>
-                      </h2>
-                      <p>
-                      You can count on Celestron Premier Select Dealers to
-                      offer an extensive assortment of Celestron products
-                      in stock for immediate delivery.
-                      </p>
-                      <br></br>         
-                      <li>14" EdgeHD Optics</li>
-                      <li>Celestron premium StarBright XLT coatings</li>
-                      <li>CGX-L computerized Equatorial mount</li>
-                      <li>Heavy Duty stainless steel tripod adjustable from 38 - 55</li>
-                      <li>9x50 finderscope with quick release bracket to help accurately find objects</li>
-                      <li>2" Star diagonal provides more comfortable viewing position when observing objects that are high in the sky</li>                   
-                      <p className="new-cars-para2">
-                      <b><h4>$ 10,999</h4></b>
-                      </p>
-                      <button
-                        className="welcome-btn new-cars-btn"
-                        onclick="window.location.href='#'"
-                      >
-                        view details
-                      </button>
-                    </div>
-                    {/*/.new-cars-txt*/}
-                  </div>
-                  {/*/.col*/}
-                </div>
-                {/*/.row*/}
-              </div>
-              {/*/.single-new-cars-item*/}
-            </div>
-            {/*/.new-cars-item*/}
-            <div className="new-cars-item">
-              <div className="single-new-cars-item">
-                <div className="row">
-                  <div className="col-md-7 col-sm-12">
-                    <div className="new-cars-img">
-                      <img src="images/new-cars-model/ncm2.png" alt="img" />
-                    </div>
-                    {/*/.new-cars-img*/}
-                  </div>
-                  <div className="col-md-5 col-sm-12">
-                    <div className="new-cars-txt">
-                      <h2>
-                        <a href="#">Apochromatic refractor Pro APO 94/517 Triplet ED CEM26 LiteRoc</a>
-                      </h2>
-                      <p>
-                      This telescope consists of an Omegon Pro 94/517 APO triplet 
-                      ED OTA and an iOptron CEM26 mount. You receive a pure-colour 
-                      ED lens and a compact yet powerful mount - a perfect first 
-                      introduction to the league of professional astrophotographers.
-                      </p>
-                      <br></br>
-                      <li>94mm triplet ED Apo with two ED lenses with extremely good correction for a colour-pure image with good contrast</li>
-                      <li>Retractable dew cap for easy transport</li>
-                      <li>3" focuser with a 1:10 reduction ratio: Easily focus larger and heavier cameras with high precision.</li>
-                      <li>Camera rotates 360° so you can find the right orientation</li>
-                      <li>Vixen-type finder shoe so you can easily mount any finderscope</li>
-                      <p className="new-cars-para2">
-                      <b><h4>$ 3,775</h4></b>
-                      </p>
-                      <button
-                        className="welcome-btn new-cars-btn"
-                        onclick="window.location.href='#'"
-                      >
-                        view details
-                      </button>
-                    </div>
-                    {/*/.new-cars-txt*/}
-                  </div>
-                  {/*/.col*/}
-                </div>
-                {/*/.row*/}
-              </div>
-              {/*/.single-new-cars-item*/}
-            </div>
-            {/*/.new-cars-item*/}
-            <div className="new-cars-item">
-              <div className="single-new-cars-item">
-                <div className="row">
-                  <div className="col-md-7 col-sm-12">
-                    <div className="new-cars-img">
-                      <img src="images/new-cars-model/ncm3.png" alt="img" />
-                    </div>
-                    {/*/.new-cars-img*/}
-                  </div>
-                  <div className="col-md-5 col-sm-12">
-                    <div className="new-cars-txt">
-                      <h2>
-                        <a href="#">Dobson telescope N 406/1800 Skyliner FlexTube BD DOB GoTo</a>
-                      </h2>
-                      <p>
-                      A large aperture for a little money - that was always the 
-                      main idea when acquiring a Dobsonian telescope. With their 
-                      BlackDiamond Dobsonian, Sky-Watcher have created a classic 
-                      with a new slant. The new, patented, a novel patented 
-                      sliding rod design makes it is particularly easy to transport.
-                      Another advantage of this is that it allows the focus point
-                      to be flexibly shifted by sliding the rods further in or out.
-                      </p>
-                      <p className="new-cars-para2">
-                      <b><h4>$ 4,432</h4></b>
-                      </p>
-                      <button
-                        className="welcome-btn new-cars-btn"
-                        onclick="window.location.href='#'"
-                      >
-                        view details
-                      </button>
-                    </div>
-                    {/*/.new-cars-txt*/}
-                  </div>
-                  {/*/.col*/}
-                </div>
-                {/*/.row*/}
-              </div>
-              {/*/.single-new-cars-item*/}
-            </div>
-            {/*/.new-cars-item*/}
-          </div>
-          {/*/#new-cars-carousel*/}
-        </div>
-        {/*/.new-cars-content*/}
-      </div>
-      {/*/.container*/}
-    </section>
+      ))}
+    </Slider>
+
+    // <section id="new-cars" className="new-cars">
+    //   <div className="container">
+    //     <div className="section-header">
+    //       <p>
+    //         checkout <span>the</span> latest telescopes
+    //       </p>
+    //       <h2>newly added</h2>
+    //     </div>
+    //     {/*/.section-header*/}
+    //     <div className="new-cars-content">
+    //       <div className="owl-carousel owl-theme" id="new-cars-carousel">
+    //         {newTelescopes.map((telescope) => (
+    //           <div className="new-cars-item">
+    //             <div className="single-new-cars-item">
+    //               <div className="row">
+    //                 <div className="col-md-7 col-sm-12">
+    //                   <div className="new-cars-img">
+    //                     <img src={telescope.image} alt="img" />
+    //                   </div>
+    //                 </div>
+    //                 <div className="col-md-5 col-sm-12">
+    //                   <div className="new-cars-txt">
+    //                     <h2>
+    //                       <a href="#">CGX-L Equatorial 1400 HD Telescope</a>
+    //                     </h2>
+    //                     <p>
+    //                       You can count on Celestron Premier Select Dealers to
+    //                       offer an extensive assortment of Celestron products in
+    //                       stock for immediate delivery.
+    //                     </p>
+    //                     <br></br>
+    //                     <li>14" EdgeHD Optics</li>
+    //                     <li>Celestron premium StarBright XLT coatings</li>
+    //                     <li>CGX-L computerized Equatorial mount</li>
+    //                     <li>
+    //                       Heavy Duty stainless steel tripod adjustable from 38 -
+    //                       55
+    //                     </li>
+    //                     <li>
+    //                       9x50 finderscope with quick release bracket to help
+    //                       accurately find objects
+    //                     </li>
+    //                     <li>
+    //                       2" Star diagonal provides more comfortable viewing
+    //                       position when observing objects that are high in the
+    //                       sky
+    //                     </li>
+    //                     <p className="new-cars-para2">
+    //                       <b>
+    //                         <h4>$ {telescope.price}</h4>
+    //                       </b>
+    //                     </p>
+    //                     <button
+    //                       className="welcome-btn new-cars-btn"
+    //                       onclick="window.location.href='#'"
+    //                     >
+    //                       view details
+    //                     </button>
+    //                   </div>
+    //                 </div>
+    //               </div>
+    //             </div>
+    //           </div>
+    //         ))}
+    //       </div>
+    //     </div>
+    //   </div>
+    // </section>
   );
 }

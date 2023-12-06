@@ -16,6 +16,7 @@ import Header from "./components/Header";
 import ClientsSay from "./components/ClientsSay";
 import OurServices from "./components/OurServices";
 import NewTelescopes from "./components/NewTelescopes";
+import TelescopeDetails from "./components/TelescopeDetails";
 import FeaturedTelescopes from "./components/FeaturedTelescopes";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -24,19 +25,26 @@ import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import ContactUs from "./components/ContactUs";
 
 function App() {
+  const [telescopes, setDetailsTelescopes] = useState([]);
 
-  const [newBrand, setNewBrand] = useState("");
-  const [newAperture, setNewAperture] = useState(0);
+  useEffect(() => {
+    const fetchDetailsTelescopes = async () => {
+      try {
+        const telescopesCollectionRef = collection(db, "telescopes");
+        const telescopesSnapshot = await getDocs(telescopesCollectionRef);
+        const telescopesData = telescopesSnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setDetailsTelescopes(telescopesData);
+        console.log("Telescopes fetched:", telescopesData);
+      } catch (error) {
+        console.error("Error fetching telescopes:", error);
+      }
+    };
 
-  const [telescopes, setTelescopes] = useState([]);
-  const telescopesCollectionRef = collection(db, "telescopes");
-
-  const createTelescope = async () => {
-    await addDoc(telescopesCollectionRef, {
-      brand: newBrand,
-      aperture: Number(newAperture),
-    });
-  };
+    fetchDetailsTelescopes();
+  }, []);
 
   return (
     <Router>
@@ -57,6 +65,11 @@ function App() {
       />
 
       <Routes>
+        <Route
+          path="/"
+          element={<FeaturedTelescopes telescopes={telescopes} />}
+        />
+        <Route path="/telescopes/:id" element={<TelescopeDetails telescopes={telescopes} />} />
         <Route path="/contact-us" element={<ContactUs />} />
       </Routes>
       <OurServices />

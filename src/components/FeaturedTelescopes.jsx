@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
+import { Link } from "react-router-dom";
 import { collection, getDocs } from "firebase/firestore";
 
 export default function FeaturedTelescopes() {
   const [telescopes, setTelescopes] = useState([]);
 
   useEffect(() => {
-    // Fetch telescopes data when the component mounts
     const fetchTelescopes = async () => {
       const telescopesCollectionRef = collection(db, "telescopes");
       const telescopesSnapshot = await getDocs(telescopesCollectionRef);
@@ -50,10 +50,14 @@ export default function FeaturedTelescopes() {
                   </div>
                   <div className="featured-telescopes-txt">
                     <h2>
+                      {/* Use Link to navigate to the details page */}
                       <a href="#">{telescope.buildType}</a>
+                      <Link to={`/telescopes/${telescope.id}`}>
+                        {telescope.buildType}
+                      </Link>
                     </h2>
                     <h3>${telescope.price}</h3>
-                    <p>{telescope.description}</p>
+                    <p className="description-catalog">{telescope.description}</p>
                   </div>
                 </div>
               </div>
