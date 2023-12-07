@@ -36,7 +36,7 @@ const LogOut = ({ onLogout }) => {
   };
 
   return (
-    <Popup trigger={<button className="button">Logout</button>} modal>
+    <Popup trigger={<button className="button">LOGOUT</button>} modal>
       <div className="auth-form-container">
         <h3>Are you sure you want to logout?</h3>
         <button className="logout-btn" onClick={handleLogout}>

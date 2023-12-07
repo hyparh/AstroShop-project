@@ -1,14 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 import Popup from "reactjs-popup";
 import { db, auth } from "../../firebase";
 import {
   collection,
-  getDocs,
   addDoc,
-  updateDoc,
   deleteDoc,
-  onSnapshot,
   doc,
 } from "firebase/firestore";
 import {
@@ -80,7 +77,7 @@ function CreateTelescope() {
   };
 
   return (
-    <Popup trigger={<button className="create-btn"> CREATE </button>} modal>
+    <Popup trigger={<button> CREATE </button>} modal>
       <div className="create-form-container">
         <label className="auth-title" for="email">
           CREATE NEW

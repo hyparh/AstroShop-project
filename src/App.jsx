@@ -3,12 +3,7 @@ import { db } from "./firebase";
 import React, { useState, useEffect } from "react";
 import {
   collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  onSnapshot,
-  doc,
+  getDocs
 } from "firebase/firestore";
 import Brand from "./components/Brand";
 import Footer from "./components/Footer";

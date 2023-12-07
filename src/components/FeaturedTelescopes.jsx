@@ -53,7 +53,7 @@ export default function FeaturedTelescopes() {
                       {/* Use Link to navigate to the details page */}
                       <a href="#">{telescope.buildType}</a>
                       <Link to={`/telescopes/${telescope.id}`}>
-                        {telescope.buildType}
+                        <button>Details</button>
                       </Link>
                     </h2>
                     <h3>${telescope.price}</h3>

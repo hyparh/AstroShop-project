@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
-import { getAuth, signOut } from "firebase/auth";
 import LogIn from "./auth/LogIn";
 import Register from "./auth/Register";
 import CreateTelescope from "./crud/CreateTelescope";
