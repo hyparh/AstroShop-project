@@ -334,6 +334,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
       border-radius: 10px;
       margin: 0.5rem;
       box-shadow: 0 0 0 100000px rgba(0, 0, 0, .5);
+      text-align: center; /* Center the content horizontally */
     }
 }
 
@@ -346,7 +347,32 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
 
 .button-style {
     margin-top: 4rem;
-    margin-left: 165px;
+    display: inline-block;
+    border: none;
+    font-weight: bold;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #2200e2;
+    transition: background-color 0.3s;
+    margin-right: 10px;
+}
+
+.button-style + .button-style {
+    margin-left: 10px;
+}
+
+.button-style:hover {
+    background-color: #2200e2;
+    color: white;
+}
+
+.create-button {
+    margin-top: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: block; /* Ensures the button takes up full width */
     border: none;
     font-weight: bold;
     background-color: white;
@@ -357,7 +383,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
     transition: background-color 0.3s;
 }
 
-.button-style:hover {
+.create-button:hover {
     background-color: #2200e2;
     color: white;
 }

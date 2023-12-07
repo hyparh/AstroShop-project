@@ -44,13 +44,11 @@ export default function FeaturedTelescopes() {
                         <span className="featured-mi-span">
                           {telescope.aperture} mm
                         </span>
-                        {/* Include other telescope properties as needed */}
                       </p>
                     </div>
                   </div>
                   <div className="featured-telescopes-txt">
                     <h2>
-                      {/* Use Link to navigate to the details page */}
                       <a href="#">{telescope.buildType}</a>
                       <Link to={`/telescopes/${telescope.id}`}>
                         <button>Details</button>

@@ -70,11 +70,11 @@ function CreateTelescope() {
     }
   };
 
-  const deleteTelescope = async (id) => {
-    const telescopesDoc = doc(db, "telescopes", id);
+  // const deleteTelescope = async (id) => {
+  //   const telescopesDoc = doc(db, "telescopes", id);
 
-    await deleteDoc(telescopesDoc);
-  };
+  //   await deleteDoc(telescopesDoc);
+  // };
 
   return (
     <Popup trigger={<button> CREATE </button>} modal>
@@ -168,10 +168,10 @@ function CreateTelescope() {
           }}
         ></textarea>
         <br></br>
-        <button className="button-style" onClick={createTelescopes}>
+        <button className="create-button" onClick={createTelescopes}>
           Create Telescope
         </button>
-        {telescopes.map((telescope) => {
+        {/* {telescopes.map((telescope) => {
           return (
             <div key={telescope.id}>
               <button
@@ -190,7 +190,7 @@ function CreateTelescope() {
               </button>
             </div>
           );
-        })}
+        })} */}
       </div>
     </Popup>
   );
