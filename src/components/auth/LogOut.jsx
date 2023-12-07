@@ -38,13 +38,17 @@ const LogOut = ({ onLogout }) => {
 
   return (
     <Popup trigger={<button className="button">LOGOUT</button>} modal>
-      <div className="auth-form-container">
-        <h3>Are you sure you want to logout?</h3>
-        <button className="button-style" onClick={handleLogout}>
-          Yes, Logout
-        </button>
-        {/* <Link to="/">Cancel</Link> */}
-      </div>
+      {(close) => (
+        <div className="auth-form-container">
+          <h3>Are you sure you want to logout?</h3>
+          <button className="button-style" onClick={handleLogout}>
+            Yes, Logout
+          </button>
+          <button className="button-style" onClick={close}>
+            Cancel
+          </button>
+        </div>
+      )}
     </Popup>
   );
 };

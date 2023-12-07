@@ -174,14 +174,6 @@ function CreateTelescope() {
         {telescopes.map((telescope) => {
           return (
             <div key={telescope.id}>
-              {/* <img>{telescope.image}</img>
-              <h1>Type: {telescope.type}</h1>
-              <h1>Build type: {telescope.buildType}</h1>
-              <h1>Aperture: {telescope.aperture}</h1>
-              <h1>Mounting type: {telescope.mountingType}</h1>
-              <h1>Goto control: {telescope.gotoControl}</h1>
-              <h1>Price: {telescope.price}</h1>
-              <h1>Description: {telescope.description}</h1> */}
               <button
                 onClick={() => {
                   updateTelescope(telescope.id, telescope.aperture);
