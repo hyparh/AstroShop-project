@@ -3,6 +3,7 @@ import Popup from "reactjs-popup";
 import { auth } from "../../firebase";
 import { toast } from "react-toastify";
 import { signOut } from "firebase/auth";
+import { Link } from "react-router-dom";
 
 const LogOut = ({ onLogout }) => {
   const handleLogout = async () => {
@@ -39,12 +40,10 @@ const LogOut = ({ onLogout }) => {
     <Popup trigger={<button className="button">LOGOUT</button>} modal>
       <div className="auth-form-container">
         <h3>Are you sure you want to logout?</h3>
-        <button className="logout-btn" onClick={handleLogout}>
+        <button className="button-style" onClick={handleLogout}>
           Yes, Logout
         </button>
-        <button className="cancel-btn" onClick={() => close() }>
-          Cancel
-        </button>
+        {/* <Link to="/">Cancel</Link> */}
       </div>
     </Popup>
   );

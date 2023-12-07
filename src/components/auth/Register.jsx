@@ -57,7 +57,7 @@ const Register = () => {
             onChange={(e) => setPassword(e.target.value)}
           ></input>
           <br></br>
-          <button className="register-btn" type="submit">Register</button>
+          <button className="button-style" type="submit">Register</button>
         </form>
       </div>
     </Popup>

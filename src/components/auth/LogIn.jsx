@@ -30,7 +30,7 @@ const LogIn = ({ onLogin }) => {
   };
 
   return (
-    <Popup trigger={<button className="button"> LOGIN </button>} modal>
+    <Popup trigger={<button> LOGIN </button>} modal>
       <div className="auth-form-container">
         <form onSubmit={onLogIn}>
           <label className="auth-title" for="email">
@@ -50,7 +50,7 @@ const LogIn = ({ onLogin }) => {
             onChange={(e) => setPassword(e.target.value)}
           ></input>
           <br></br>
-          <button className="login-btn" type="submit">
+          <button className="button-style" type="submit">
             Log In
           </button>
         </form>

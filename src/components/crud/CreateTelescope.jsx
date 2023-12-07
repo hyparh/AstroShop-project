@@ -168,7 +168,7 @@ function CreateTelescope() {
           }}
         ></textarea>
         <br></br>
-        <button className="create-btn" onClick={createTelescopes}>
+        <button className="button-style" onClick={createTelescopes}>
           Create Telescope
         </button>
         {telescopes.map((telescope) => {
