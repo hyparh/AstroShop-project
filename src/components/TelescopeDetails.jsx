@@ -29,7 +29,7 @@ const TelescopeDetails = ({ telescopes }) => {
         await deleteDoc(telescopeRef);
 
         toast.success("Telescope successfully deleted!");
-        history.push("/");
+        history("/");
       } else {
         toast.error("You don't have permission to delete this telescope.");
       }
@@ -39,25 +39,52 @@ const TelescopeDetails = ({ telescopes }) => {
   };
 
   return (
-    <div className="telescope-details">
-      <p>Type: {telescope.type}</p>
-      <p>Aperture: {telescope.aperture} mm</p>
-      <p>Description: {telescope.description}</p>
-      <p>Price: ${telescope.price}</p>
+    <div className="create-form-container" style={{ marginTop: "200px" }}>
+      <img src={telescope.image} alt="Telescope" />
+      <p className="darker-color" style={{ textAlign: "left" }}>
+        Type: {telescope.type}
+      </p>
+      <p className="darker-color" style={{ textAlign: "left" }}>
+        Aperture: {telescope.aperture} mm
+      </p>
+      <p className="darker-color" style={{ textAlign: "left" }}>
+        Description: {telescope.description}
+      </p>
+      <p className="darker-color" style={{ textAlign: "left" }}>
+        Price: ${telescope.price}
+      </p>
       {user && telescope && telescope.userId === user.uid && (
-        <Link to="/edit-telescope:id" className="button-style">Edit</Link>
-      )}    
+        <Link to="/edit-telescope:id" className="button-style">
+          Edit
+        </Link>
+      )}
       {user && telescope && telescope.userId === user.uid && (
-        <button onClick={() => setShowDeleteConfirmation(true)}>Delete</button>
+        <button
+          onClick={() => setShowDeleteConfirmation(true)}
+          className="button-style"
+        >
+          Delete
+        </button>
       )}
       <Popup open={showDeleteConfirmation} closeOnDocumentClick={false}>
         <div className="auth-form-container">
-          <p className="darker-color">Are you sure you want to delete this telescope?</p>
-          <button onClick={handleDelete}>Yes</button>
-          <button onClick={() => setShowDeleteConfirmation(false)}>No</button>
+          <p className="darker-color">
+            Are you sure you want to delete this telescope?
+          </p>
+          <button onClick={handleDelete} className="button-style">
+            Yes
+          </button>
+          <button
+            onClick={() => setShowDeleteConfirmation(false)}
+            className="button-style"
+          >
+            No
+          </button>
         </div>
       </Popup>
-      <Link to="/" className="button-style">Close</Link>
+      <Link to="/" className="button-style">
+        Close
+      </Link>
     </div>
   );
 };

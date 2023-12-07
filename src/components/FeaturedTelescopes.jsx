@@ -50,7 +50,7 @@ export default function FeaturedTelescopes() {
                   <div className="featured-telescopes-txt">
                     <h2>
                       <a href="#">{telescope.buildType}</a>
-                      <Link to={`/telescopes/${telescope.id}`}>
+                      <Link to={`/telescopes/${telescope.id}`} className="button-style">
                         <button>Details</button>
                       </Link>
                     </h2>

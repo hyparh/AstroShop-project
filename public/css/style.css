@@ -368,6 +368,11 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
     color: white;
 }
 
+.user-display {
+    background-color: #2200e2;
+    color: white;
+}
+
 .create-button {
     margin-top: 4rem;
     margin-left: auto;
@@ -393,16 +398,19 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
 ---------------------- */
 
 .create-form-container {
+    margin-top: 200px;
     background-color: rgb(142, 117, 199);
     padding: 5rem;
     border: 1px solid rgb(22, 29, 4);
     border-radius: 10px;
     margin: 0.5rem;
     box-shadow: 0 0 0 100000px rgba(0, 0, 0, .5);
-}   
+    text-align: center; /* Center the content horizontally */
+} 
 
 .create-form-container select,
 .create-form-container input {
+    text-align: left;
     display: block;
     margin-bottom: 1rem;
 }
@@ -447,14 +455,14 @@ nav.navbar.bootsnav .navbar-toggle i{color: #4e4ffa;}
      Telescope details
 ---------------------- */
 
-.telescope-details {
+.details-container {
     background-color: rgb(142, 117, 199);
     padding: 5rem;
     border: 1px solid rgb(22, 29, 4);
     border-radius: 10px;
     margin: 0.5rem;
     box-shadow: 0 0 0 100000px rgba(0, 0, 0, .5);
-  }
+} 
 
 /*-------------------------------------
         5. Service 

@@ -2,20 +2,17 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import Popup from "reactjs-popup";
 import { db, auth } from "../../firebase";
-import {
-  collection,
-  addDoc,
-  deleteDoc,
-  doc,
-} from "firebase/firestore";
+import { collection, addDoc, deleteDoc, doc } from "firebase/firestore";
 import {
   telescopeTypes,
   buildTypes,
   mountingTypes,
   gotoControls,
 } from "./Constants";
+import { useNavigate } from "react-router-dom";
 
 function CreateTelescope() {
+  const history = useNavigate();
   const [newType, setNewType] = useState("");
   const [newBuildType, setNewBuildType] = useState("");
   const [newMountingType, setNewMountingType] = useState("");
@@ -62,6 +59,7 @@ function CreateTelescope() {
         console.log(docRef);
 
         toast.success("Telescope successfully created!");
+        history("/");
       } catch (error) {
         toast.error("Error creating telescope:", error.message);
       }
@@ -69,12 +67,6 @@ function CreateTelescope() {
       toast.error("User is not logged in");
     }
   };
-
-  // const deleteTelescope = async (id) => {
-  //   const telescopesDoc = doc(db, "telescopes", id);
-
-  //   await deleteDoc(telescopesDoc);
-  // };
 
   return (
     <Popup trigger={<button> CREATE </button>} modal>
@@ -161,14 +153,15 @@ function CreateTelescope() {
             setNewPrice(event.target.value);
           }}
         ></input>
-        <textarea className="description"
+        <textarea
+          className="description"
           placeholder="Description..."
           onChange={(event) => {
             setNewDescription(event.target.value);
           }}
         ></textarea>
         <br></br>
-        <button className="create-button" onClick={createTelescopes}>
+        <button className="create-button" onClick={createTelescopes} type="submit">
           Create Telescope
         </button>
         {/* {telescopes.map((telescope) => {

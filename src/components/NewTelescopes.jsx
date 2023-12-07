@@ -38,8 +38,8 @@ export default function NewTelescopes() {
         <div className="slider-container">
           <img src={telescope.image} alt="img" />
           <h3>{telescope.type}</h3>
-          <h3>{telescope.price}</h3>
-          <h3>{telescope.userId}</h3>
+          <h3>{telescope.mountingType}</h3>
+          <h3>$ {telescope.price}</h3>
         </div>
       ))}
     </Slider>
