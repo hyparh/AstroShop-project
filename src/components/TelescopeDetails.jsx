@@ -44,18 +44,20 @@ const TelescopeDetails = ({ telescopes }) => {
       <p>Aperture: {telescope.aperture} mm</p>
       <p>Description: {telescope.description}</p>
       <p>Price: ${telescope.price}</p>
-      <Link to="/edit-telescope:id">Edit</Link>
+      {user && telescope && telescope.userId === user.uid && (
+        <Link to="/edit-telescope:id" className="button-style">Edit</Link>
+      )}    
       {user && telescope && telescope.userId === user.uid && (
         <button onClick={() => setShowDeleteConfirmation(true)}>Delete</button>
       )}
       <Popup open={showDeleteConfirmation} closeOnDocumentClick={false}>
         <div className="auth-form-container">
-          <p>Are you sure you want to delete this telescope?</p>
+          <p className="darker-color">Are you sure you want to delete this telescope?</p>
           <button onClick={handleDelete}>Yes</button>
           <button onClick={() => setShowDeleteConfirmation(false)}>No</button>
         </div>
       </Popup>
-      <Link to="/">Close</Link>
+      <Link to="/" className="button-style">Close</Link>
     </div>
   );
 };

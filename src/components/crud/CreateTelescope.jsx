@@ -79,7 +79,7 @@ function CreateTelescope() {
   return (
     <Popup trigger={<button> CREATE </button>} modal>
       <div className="create-form-container">
-        <label className="auth-title" for="email">
+        <label className="darker-color" for="email">
           CREATE NEW
         </label>
         <br></br>

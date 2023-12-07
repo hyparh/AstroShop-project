@@ -33,7 +33,7 @@ const LogIn = ({ onLogin }) => {
     <Popup trigger={<button> LOGIN </button>} modal>
       <div className="auth-form-container">
         <form onSubmit={onLogIn}>
-          <label className="auth-title" for="email">
+          <label className="darker-color" for="email">
             ENTER YOUR CREDENTIALS
           </label>
           <br></br>

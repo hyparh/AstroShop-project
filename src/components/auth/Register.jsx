@@ -42,7 +42,7 @@ const Register = () => {
     <Popup trigger={<button className="button"> REGISTER </button>} modal>
       <div className="auth-form-container">
         <form onSubmit={onRegister}>
-          <label className="auth-title">CREATE ACCOUNT</label>
+          <label className="button-style">CREATE ACCOUNT</label>
           <br></br>
           <input
             type="email"
