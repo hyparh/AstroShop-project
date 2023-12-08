@@ -9,7 +9,7 @@ import {
   mountingTypes,
   gotoControls,
 } from "./Constants";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function CreateTelescope() {
   const history = useNavigate();
@@ -23,7 +23,6 @@ function CreateTelescope() {
   const [newPrice, setNewPrice] = useState(0);
   const [newCondition, setNewCondition] = useState("");
   const [newExploitation, setNewExploitation] = useState("");
-  const [telescopes, setTelescopes] = useState([]);
   const telescopesCollectionRef = collection(db, "telescopes");
 
   const createTelescopes = async () => {
@@ -190,26 +189,6 @@ function CreateTelescope() {
           <button className="create-button" onClick={close}>
             Close
           </button>
-          {/* {telescopes.map((telescope) => {
-          return (
-            <div key={telescope.id}>
-              <button
-                onClick={() => {
-                  updateTelescope(telescope.id, telescope.aperture);
-                }}
-              >
-                Increase Aperture
-              </button>
-              <button
-                onClick={() => {
-                  deleteTelescope(telescope.id);
-                }}
-              >
-                Delete Telescope
-              </button>
-            </div>
-          );
-        })} */}
         </div>
       )}
     </Popup>

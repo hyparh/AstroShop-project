@@ -3,7 +3,7 @@ import { db } from "../firebase";
 import Popup from "reactjs-popup";
 import { auth } from "../firebase";
 import { toast } from "react-toastify";
-import { doc, deleteDoc } from "firebase/firestore";
+import { doc, deleteDoc, updateDoc } from "firebase/firestore";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 const TelescopeDetails = ({ telescopes }) => {
@@ -12,6 +12,13 @@ const TelescopeDetails = ({ telescopes }) => {
   const history = useNavigate();
   const [user, setUser] = useState(null);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  const [showEditPopup, setShowEditPopup] = useState(false);
+  const [updatedTelescope, setUpdatedTelescope] = useState({
+    type: "",
+    aperture: 0,
+    description: "",
+    price: 0,
+  });
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -34,8 +41,33 @@ const TelescopeDetails = ({ telescopes }) => {
         toast.error("You don't have permission to delete this telescope.");
       }
     } catch (error) {
-      error("Error deleting telescope:", error.message);
+      toast.error("Error deleting telescope:", error.message);
     }
+  };
+
+  const handleEdit = async () => {
+    try {
+      const telescopeRef = doc(db, "telescopes", id);
+
+      if (telescope && user && telescope.userId === user.uid) {
+        await updateDoc(telescopeRef, updatedTelescope);
+
+        toast.success("Telescope successfully updated!");
+        setShowEditPopup(false);
+      } else {
+        toast.error("You don't have permission to edit this telescope.");
+      }
+    } catch (error) {
+      toast.error("Error updating telescope:", error.message);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUpdatedTelescope((prevTelescope) => ({
+      ...prevTelescope,
+      [name]: value,
+    }));
   };
 
   return (
@@ -69,9 +101,9 @@ const TelescopeDetails = ({ telescopes }) => {
         Price: ${telescope.price}
       </p>
       {user && telescope && telescope.userId === user.uid && (
-        <Link to="/edit-telescope:id" className="button-style">
+        <button onClick={() => setShowEditPopup(true)} className="button-style">
           Edit
-        </Link>
+        </button>
       )}
       {user && telescope && telescope.userId === user.uid && (
         <button
@@ -96,6 +128,59 @@ const TelescopeDetails = ({ telescopes }) => {
             No
           </button>
         </div>
+      </Popup>
+      <Popup open={showEditPopup} closeOnDocumentClick={false}>
+        {/* Your edit telescope form or component goes here */}
+        {/* Pass handleEdit function to your edit form */}
+        <div className="auth-form-container">
+          <h2>Edit Telescope</h2>
+          <form>
+            <label>
+              Type:
+              <input
+                type="text"
+                name="type"
+                value={updatedTelescope.type}
+                onChange={handleInputChange}
+              />
+            </label>
+            <label>
+              Aperture:
+              <input
+                type="number"
+                name="aperture"
+                value={updatedTelescope.aperture}
+                onChange={handleInputChange}
+              />
+            </label>
+            <label>
+              Description:
+              <textarea
+                name="description"
+                value={updatedTelescope.description}
+                onChange={handleInputChange}
+              />
+            </label>
+            <label>
+              Price:
+              <input
+                type="number"
+                name="price"
+                value={updatedTelescope.price}
+                onChange={handleInputChange}
+              />
+            </label>
+          </form>
+        </div>
+        <button onClick={handleEdit} className="button-style">
+          Save
+        </button>
+        <button
+          onClick={() => setShowDeleteConfirmation(false)}
+          className="button-style"
+        >
+          Cancel
+        </button>
       </Popup>
       <Link to="/" className="button-style">
         Close

@@ -7,11 +7,9 @@ import LogOut from "./auth/LogOut";
 
 export default function Header() {
   const [user, setUser] = useState(null);
-  //const [userDisplayEmail, setUserDisplayEmail] = useState("");
 
   const updateUser = (userData) => {
     setUser(userData);
-    //setUserDisplayEmail(userData.email || "User");
   };
 
   return (
