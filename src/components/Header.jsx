@@ -121,11 +121,8 @@ export default function Header() {
       {/* top-area End */}
       <div className="container">
         <div className="welcome-hero-txt">
-          <h2>get your telescope in resonable price</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
+          <h2>get your second hand telescope in resonable price</h2>
+          <p>Europe's largest second hand astronomy equipment retailer</p>
           <Link to="/contact-us">
             <button className="welcome-btn">contact us</button>
           </Link>

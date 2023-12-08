@@ -21,6 +21,8 @@ function CreateTelescope() {
   const [newDescription, setNewDescription] = useState("");
   const [newAperture, setNewAperture] = useState(0);
   const [newPrice, setNewPrice] = useState(0);
+  const [newCondition, setNewCondition] = useState("");
+  const [newExploitation, setNewExploitation] = useState("");
   const [telescopes, setTelescopes] = useState([]);
   const telescopesCollectionRef = collection(db, "telescopes");
 
@@ -38,6 +40,8 @@ function CreateTelescope() {
           description: newDescription,
           aperture: Number(newAperture),
           price: Number(newPrice),
+          condition: newCondition,
+          exploitation: newExploitation,
           userId: user.uid,
         };
 
@@ -47,6 +51,8 @@ function CreateTelescope() {
           !newBuildType ||
           !newGotoControl ||
           !newImage ||
+          !newCondition ||
+          !newExploitation ||
           !isNaN(Number(newImage)) ||
           isNaN(Number(newAperture)) ||
           isNaN(Number(newPrice))
@@ -70,101 +76,121 @@ function CreateTelescope() {
 
   return (
     <Popup trigger={<button> CREATE </button>} modal>
-      <div className="create-form-container">
-        <label className="darker-color" for="email">
-          CREATE NEW
-        </label>
-        <br></br>
-        <select
-          value={newType}
-          onChange={(event) => {
-            setNewType(event.target.value);
-          }}
-        >
-          <option value="" disabled>
-            Select Type
-          </option>
-          {telescopeTypes.map((type) => (
-            <option key={type} value={type}>
-              {type}
+      {(close) => (
+        <div className="create-form-container">
+          <label className="darker-color" for="email">
+            CREATE NEW
+          </label>
+          <br></br>
+          <select
+            value={newType}
+            onChange={(event) => {
+              setNewType(event.target.value);
+            }}
+          >
+            <option value="" disabled>
+              Select Type
             </option>
-          ))}
-        </select>
-        <select
-          value={newBuildType}
-          onChange={(event) => {
-            setNewBuildType(event.target.value);
-          }}
-        >
-          <option value="" disabled>
-            Select Build Type
-          </option>
-          {buildTypes.map((buildType) => (
-            <option key={buildType} value={buildType}>
-              {buildType}
+            {telescopeTypes.map((type) => (
+              <option key={type} value={type}>
+                {type}
+              </option>
+            ))}
+          </select>
+          <select
+            value={newBuildType}
+            onChange={(event) => {
+              setNewBuildType(event.target.value);
+            }}
+          >
+            <option value="" disabled>
+              Select Build Type
             </option>
-          ))}
-        </select>
-        <select
-          value={newMountingType}
-          onChange={(event) => {
-            setNewMountingType(event.target.value);
-          }}
-        >
-          <option value="" disabled>
-            Select Mounting Type
-          </option>
-          {mountingTypes.map((mountingType) => (
-            <option key={mountingType} value={mountingType}>
-              {mountingType}
+            {buildTypes.map((buildType) => (
+              <option key={buildType} value={buildType}>
+                {buildType}
+              </option>
+            ))}
+          </select>
+          <select
+            value={newMountingType}
+            onChange={(event) => {
+              setNewMountingType(event.target.value);
+            }}
+          >
+            <option value="" disabled>
+              Select Mounting Type
             </option>
-          ))}
-        </select>
-        <select
-          value={newGotoControl}
-          onChange={(event) => {
-            setNewGotoControl(event.target.value);
-          }}
-        >
-          <option value="" disabled>
-            Select Goto Control
-          </option>
-          {gotoControls.map((gotoControl) => (
-            <option key={gotoControl} value={gotoControl}>
-              {gotoControl}
+            {mountingTypes.map((mountingType) => (
+              <option key={mountingType} value={mountingType}>
+                {mountingType}
+              </option>
+            ))}
+          </select>
+          <select
+            value={newGotoControl}
+            onChange={(event) => {
+              setNewGotoControl(event.target.value);
+            }}
+          >
+            <option value="" disabled>
+              Select Goto Control
             </option>
-          ))}
-        </select>
-        <input
-          placeholder="Image URL or file path"
-          onChange={(event) => {
-            setNewImage(event.target.value);
-          }}
-        ></input>
-        <input
-          placeholder="Aperture in mm..."
-          onChange={(event) => {
-            setNewAperture(event.target.value);
-          }}
-        ></input>
-        <input
-          placeholder="Price..."
-          onChange={(event) => {
-            setNewPrice(event.target.value);
-          }}
-        ></input>
-        <textarea
-          className="description"
-          placeholder="Description..."
-          onChange={(event) => {
-            setNewDescription(event.target.value);
-          }}
-        ></textarea>
-        <br></br>
-        <button className="create-button" onClick={createTelescopes} type="submit">
-          Create Telescope
-        </button>
-        {/* {telescopes.map((telescope) => {
+            {gotoControls.map((gotoControl) => (
+              <option key={gotoControl} value={gotoControl}>
+                {gotoControl}
+              </option>
+            ))}
+          </select>
+          <input
+            placeholder="Image URL or file path"
+            onChange={(event) => {
+              setNewImage(event.target.value);
+            }}
+          ></input>
+          <input
+            placeholder="Aperture in mm..."
+            onChange={(event) => {
+              setNewAperture(event.target.value);
+            }}
+          ></input>
+          <input
+            placeholder="Condition..."
+            onChange={(event) => {
+              setNewCondition(event.target.value);
+            }}
+          ></input>
+          <input
+            placeholder="Exploitation period..."
+            onChange={(event) => {
+              setNewExploitation(event.target.value);
+            }}
+          ></input>
+          <input
+            placeholder="Price..."
+            onChange={(event) => {
+              setNewPrice(event.target.value);
+            }}
+          ></input>
+          <textarea
+            className="description"
+            placeholder="Description..."
+            onChange={(event) => {
+              setNewDescription(event.target.value);
+            }}
+          ></textarea>
+          <br></br>
+          <button
+            className="create-button"
+            onClick={createTelescopes}
+            type="submit"
+          >
+            Create Telescope
+          </button>
+          <button className="create-button" onClick={close}>
+            Close
+          </button>
+          {/* {telescopes.map((telescope) => {
           return (
             <div key={telescope.id}>
               <button
@@ -184,7 +210,8 @@ function CreateTelescope() {
             </div>
           );
         })} */}
-      </div>
+        </div>
+      )}
     </Popup>
   );
 }

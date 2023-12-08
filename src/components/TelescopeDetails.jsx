@@ -45,7 +45,22 @@ const TelescopeDetails = ({ telescopes }) => {
         Type: {telescope.type}
       </p>
       <p className="darker-color" style={{ textAlign: "left" }}>
+        Mounting type: {telescope.mountingType}
+      </p>
+      <p className="darker-color" style={{ textAlign: "left" }}>
+        Build type: {telescope.buildType}
+      </p>
+      <p className="darker-color" style={{ textAlign: "left" }}>
+        Goto control: {telescope.gotoControl}
+      </p>
+      <p className="darker-color" style={{ textAlign: "left" }}>
         Aperture: {telescope.aperture} mm
+      </p>
+      <p className="darker-color" style={{ textAlign: "left" }}>
+        Condition: {telescope.condition}
+      </p>
+      <p className="darker-color" style={{ textAlign: "left" }}>
+        Exploitation: {telescope.exploitation}
       </p>
       <p className="darker-color" style={{ textAlign: "left" }}>
         Description: {telescope.description}
