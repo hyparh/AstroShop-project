@@ -40,26 +40,33 @@ const Register = () => {
 
   return (
     <Popup trigger={<button className="button"> REGISTER </button>} modal>
-      <div className="auth-form-container">
-        <form onSubmit={onRegister}>
-          <label className="darker-color">CREATE ACCOUNT</label>
-          <br></br>
-          <input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          ></input>
-          <input
-            type="password"
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          ></input>
-          <br></br>
-          <button className="button-style" type="submit">Register</button>
-        </form>
-      </div>
+      {(close) => (
+        <div className="auth-form-container">
+          <form onSubmit={onRegister}>
+            <label className="darker-color">CREATE ACCOUNT</label>
+            <br></br>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            ></input>
+            <input
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            ></input>
+            <br></br>
+            <button className="button-style" type="submit">
+              Register
+            </button>
+            <button className="button-style" type="submit" onClick={close}>
+              Close
+            </button>
+          </form>
+        </div>
+      )}
     </Popup>
   );
 };

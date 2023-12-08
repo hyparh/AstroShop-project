@@ -7,11 +7,11 @@ import LogOut from "./auth/LogOut";
 
 export default function Header() {
   const [user, setUser] = useState(null);
-  const [userDisplayEmail, setUserDisplayEmail] = useState("");
+  //const [userDisplayEmail, setUserDisplayEmail] = useState("");
 
   const updateUser = (userData) => {
     setUser(userData);
-    setUserDisplayEmail(userData.email || "User");
+    //setUserDisplayEmail(userData.email || "User");
   };
 
   return (
@@ -99,11 +99,11 @@ export default function Header() {
                   <li className="scroll">
                     <a href="#contact">contact</a>
                   </li>
-                  {userDisplayEmail && (
+                  {/* {userDisplayEmail && (
                     <div className="user-display">
                       Welcome, {userDisplayEmail}!
                     </div>
-                  )}
+                  )} */}
                 </ul>
                 {/*/.nav */}
               </div>
