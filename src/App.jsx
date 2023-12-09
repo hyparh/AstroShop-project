@@ -1,5 +1,5 @@
-import Blog from "./Blog";
 import { db } from "./firebase";
+import "./App.css";
 import React, { useState, useEffect } from "react";
 import {
   collection,
@@ -7,13 +7,12 @@ import {
 } from "firebase/firestore";
 import Brand from "./components/Brand";
 import Footer from "./components/Footer";
-import Header from "./components/Header";
-import ClientsSay from "./components/ClientsSay";
+import Navigation from "./components/Navigation";
 import OurServices from "./components/OurServices";
 import NewTelescopes from "./components/NewTelescopes";
 import TelescopeDetails from "./components/TelescopeDetails";
 import FeaturedTelescopes from "./components/FeaturedTelescopes";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Slide } from "react-toastify";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
@@ -43,7 +42,8 @@ function App() {
 
   return (
     <Router>
-      <Header />
+      <Navigation />
+      <div className="bg"></div>
 
       <ToastContainer
         position="top-center"
@@ -70,9 +70,7 @@ function App() {
       <OurServices />
       <NewTelescopes />
       <FeaturedTelescopes />
-      <ClientsSay />
       <Brand />
-      <Blog />
 
       <Footer />
     </Router>
