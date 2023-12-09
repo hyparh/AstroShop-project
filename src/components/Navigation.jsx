@@ -1,3 +1,4 @@
+import "../App.css";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import LogIn from "./auth/LogIn";
@@ -7,9 +8,11 @@ import LogOut from "./auth/LogOut";
 
 const Navigation = () => {
   const [user, setUser] = useState(null);
+  const [userDisplayEmail, setUserDisplayEmail] = useState("");
 
   const updateUser = (userData) => {
     setUser(userData);
+    setUserDisplayEmail(userData.email || "User");
   };
 
   return (
@@ -21,8 +24,35 @@ const Navigation = () => {
               Home
             </a>
           </li>
+          {user ? (
+            <>
+              <li>
+                <a>
+                  <CreateTelescope />
+                </a>
+              </li>
+              <li>
+                <a>
+                  <LogOut onLogout={updateUser} />
+                </a>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <a>
+                  <LogIn onLogin={updateUser} />
+                </a>
+              </li>
+              <li>
+                <a>
+                  <Register onLogin={updateUser} />
+                </a>
+              </li>
+            </>
+          )}
           <li>
-            <a href="index.html">Shop</a>
+            <a href="index.html">Catalog</a>
           </li>
           <li>
             <a href="index.html">Blog</a>

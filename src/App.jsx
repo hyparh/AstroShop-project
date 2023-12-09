@@ -17,6 +17,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Slide } from "react-toastify";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import ContactUs from "./components/ContactUs";
+import LogIn from "./components/auth/LogIn";
 
 function App() {
   const [telescopes, setDetailsTelescopes] = useState([]);

@@ -39,7 +39,7 @@ const Register = () => {
   };
 
   return (
-    <Popup trigger={<button className="button"> REGISTER </button>} modal>
+    <Popup trigger={<a style={{ cursor: 'pointer' }}> Register </a>} modal>
       {(close) => (
         <div className="auth-form-container">
           <form onSubmit={onRegister}>

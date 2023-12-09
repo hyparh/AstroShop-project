@@ -1,3 +1,4 @@
+//import "../../App.css";
 import React, { useState } from "react";
 import Popup from "reactjs-popup";
 import { auth } from "../../firebase";
@@ -30,7 +31,7 @@ const LogIn = ({ onLogin }) => {
   };
 
   return (
-    <Popup trigger={<button> LOGIN </button>} modal>
+    <Popup trigger={<a style={{ cursor: 'pointer' }}> Login </a>} modal>
       <div className="auth-form-container">
         <form onSubmit={onLogIn}>
           <label className="darker-color" for="email">

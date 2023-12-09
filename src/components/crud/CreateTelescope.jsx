@@ -74,7 +74,7 @@ function CreateTelescope() {
   };
 
   return (
-    <Popup trigger={<button> CREATE </button>} modal>
+    <Popup trigger={<a style={{ cursor: 'pointer' }}> Create </a>} modal>
       {(close) => (
         <div className="create-form-container">
           <label className="darker-color" for="email">
