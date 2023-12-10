@@ -3,7 +3,6 @@ import Popup from "reactjs-popup";
 import { auth } from "../../firebase";
 import { toast } from "react-toastify";
 import { signOut } from "firebase/auth";
-import { Link } from "react-router-dom";
 
 const LogOut = ({ onLogout }) => {
   const handleLogout = async () => {

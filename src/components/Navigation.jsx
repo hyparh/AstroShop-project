@@ -1,5 +1,5 @@
 import "../App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import LogIn from "./auth/LogIn";
 import Register from "./auth/Register";
@@ -10,9 +10,30 @@ const Navigation = () => {
   const [user, setUser] = useState(null);
   const [userDisplayEmail, setUserDisplayEmail] = useState("");
 
+  //check for user data in localStorage on component mount
+  useEffect(() => {
+    const storedUserData = JSON.parse(localStorage.getItem("userData"));
+
+    if (storedUserData) {
+      setUser(storedUserData);
+      setUserDisplayEmail(storedUserData.email || "User");
+    }
+  }, []);
+
   const updateUser = (userData) => {
-    setUser(userData);
-    setUserDisplayEmail(userData.email || "User");
+    if (userData) {
+      setUser(userData);
+      setUserDisplayEmail(userData.email || "User");
+
+      //store user data in localStorage
+      localStorage.setItem("userData", JSON.stringify(userData));
+    } else {
+      setUser(null);
+      setUserDisplayEmail("");
+
+      //remove user data from localStorage on logout
+      localStorage.removeItem("userData");
+    }
   };
 
   return (

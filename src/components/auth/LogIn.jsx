@@ -54,9 +54,9 @@ const LogIn = ({ onLogin }) => {
           </form>
         </div>
       {/* Display user's name if available */}
-      {userDisplayEmail && (
+      {/* {userDisplayEmail && (
         <div className="user-display">Welcome, {userDisplayEmail}!</div>
-      )}
+      )} */}
     </Popup>
   );
 };
