@@ -16,10 +16,10 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Slide } from "react-toastify";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
-import ContactUs from "./components/ContactUs";
 import LogIn from "./components/auth/LogIn";
+import About from "./components/About";
 
-function App() {
+export default function App() {
   const [telescopes, setDetailsTelescopes] = useState([]);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ function App() {
       <div className="bg"></div>
 
       <ToastContainer
-        position="top-center"
+        position="bottom-center"
         transition={Slide}
         autoClose={2500}
         hideProgressBar={false}
@@ -61,21 +61,14 @@ function App() {
       />
 
       <Routes>
-        <Route
-          path="/"
-          element={<FeaturedTelescopes telescopes={telescopes} />}
-        />
         <Route path="/telescopes/:id" element={<TelescopeDetails telescopes={telescopes} />} />
-        <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/catalog" element={<FeaturedTelescopes />} />
       </Routes>
-      <OurServices />
       <NewTelescopes />
-      <FeaturedTelescopes />
       <Brand />
 
       <Footer />
     </Router>
   );
 }
-
-export default App;

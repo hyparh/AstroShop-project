@@ -41,10 +41,9 @@ const Register = () => {
   return (
     <Popup trigger={<a style={{ cursor: 'pointer' }}> Register </a>} modal>
       {(close) => (
-        <div className="auth-form-container">
+        <div className="form-container">
           <form onSubmit={onRegister}>
-            <label className="darker-color">CREATE ACCOUNT</label>
-            <br></br>
+            <label className="form-heading">Create account</label>
             <input
               type="email"
               placeholder="Enter your email"
@@ -57,11 +56,10 @@ const Register = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             ></input>
-            <br></br>
             <button className="button-style" type="submit">
               Register
             </button>
-            <button className="button-style" type="submit" onClick={close}>
+            <button className="button-style" onClick={close}>
               Close
             </button>
           </form>

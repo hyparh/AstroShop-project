@@ -11,7 +11,7 @@ import {
 } from "./Constants";
 import { Link, useNavigate } from "react-router-dom";
 
-function CreateTelescope() {
+export default function CreateTelescope() {
   const history = useNavigate();
   const [newType, setNewType] = useState("");
   const [newBuildType, setNewBuildType] = useState("");
@@ -76,11 +76,10 @@ function CreateTelescope() {
   return (
     <Popup trigger={<a style={{ cursor: 'pointer' }}> Create </a>} modal>
       {(close) => (
-        <div className="create-form-container">
-          <label className="darker-color" for="email">
-            CREATE NEW
+        <div className="form-container">
+          <label className="form-heading" for="email">
+            Create new
           </label>
-          <br></br>
           <select
             value={newType}
             onChange={(event) => {
@@ -178,15 +177,14 @@ function CreateTelescope() {
               setNewDescription(event.target.value);
             }}
           ></textarea>
-          <br></br>
           <button
-            className="create-button"
+            className="button-style"
             onClick={createTelescopes}
             type="submit"
           >
             Create Telescope
           </button>
-          <button className="create-button" onClick={close}>
+          <button className="button-style" onClick={close}>
             Close
           </button>
         </div>
@@ -194,5 +192,3 @@ function CreateTelescope() {
     </Popup>
   );
 }
-
-export default CreateTelescope;

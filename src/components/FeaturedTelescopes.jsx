@@ -32,7 +32,7 @@ export default function FeaturedTelescopes() {
         <div className="featured-telescopes-content">
           <div className="row">
             {telescopes.map((telescope) => (
-              <div key={telescope.id} className="col-lg-3 col-md-4 col-sm-6">
+              <div key={telescope.id} className="">
                 <div className="single-featured-telescopes">
                   <div className="featured-img-box">
                     <div className="featured-telescopes-img">

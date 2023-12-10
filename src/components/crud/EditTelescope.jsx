@@ -3,7 +3,7 @@ import { db } from "../firebase";
 import { useParams, useHistory } from "react-router-dom";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 
-const EditTelescope = () => {
+export default EditTelescope = () => {
   const { id } = useParams();
   const history = useHistory();
 
@@ -48,7 +48,7 @@ const EditTelescope = () => {
   };
 
   return (
-    <div className="auth-form-container">
+    <div className="form-container">
       <h2>Edit Telescope</h2>
       <form>
         <label>
@@ -93,5 +93,3 @@ const EditTelescope = () => {
     </div>
   );
 };
-
-export default EditTelescope;

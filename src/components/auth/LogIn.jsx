@@ -1,4 +1,3 @@
-//import "../../App.css";
 import React, { useState } from "react";
 import Popup from "reactjs-popup";
 import { auth } from "../../firebase";
@@ -31,31 +30,29 @@ const LogIn = ({ onLogin }) => {
   };
 
   return (
-    <Popup trigger={<a style={{ cursor: 'pointer' }}> Login </a>} modal>
-      <div className="auth-form-container">
-        <form onSubmit={onLogIn}>
-          <label className="darker-color" for="email">
-            ENTER YOUR CREDENTIALS
-          </label>
-          <br></br>
-          <input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          ></input>
-          <input
-            type="password"
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          ></input>
-          <br></br>
-          <button className="button-style" type="submit">
-            Log In
-          </button>
-        </form>
-      </div>
+    <Popup trigger={<a style={{ cursor: "pointer" }}> Login </a>} modal>
+        <div className="form-container">
+          <form onSubmit={onLogIn}>
+            <label className="form-heading" for="email">
+              Enter your credentials
+            </label>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            ></input>
+            <input
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            ></input>
+            <button className="button-style" type="submit">
+              Log In
+            </button>
+          </form>
+        </div>
       {/* Display user's name if available */}
       {userDisplayEmail && (
         <div className="user-display">Welcome, {userDisplayEmail}!</div>

@@ -114,7 +114,7 @@ const TelescopeDetails = ({ telescopes }) => {
         </button>
       )}
       <Popup open={showDeleteConfirmation} closeOnDocumentClick={false}>
-        <div className="auth-form-container">
+        <div className="form-container">
           <p className="darker-color">
             Are you sure you want to delete this telescope?
           </p>
@@ -132,7 +132,7 @@ const TelescopeDetails = ({ telescopes }) => {
       <Popup open={showEditPopup} closeOnDocumentClick={false}>
         {/* Your edit telescope form or component goes here */}
         {/* Pass handleEdit function to your edit form */}
-        <div className="auth-form-container">
+        <div className="form-container">
           <h2>Edit Telescope</h2>
           <form>
             <label>

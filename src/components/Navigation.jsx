@@ -17,6 +17,7 @@ const Navigation = () => {
 
   return (
     <nav className="nav">
+      <text className="heading">Astro Shop</text>
       <div>
         <ul id="navbar">
           <li>
@@ -40,7 +41,7 @@ const Navigation = () => {
           ) : (
             <>
               <li>
-                <a>
+                <a className="sans">
                   <LogIn onLogin={updateUser} />
                 </a>
               </li>
@@ -52,13 +53,13 @@ const Navigation = () => {
             </>
           )}
           <li>
-            <a href="index.html">Catalog</a>
+            <Link to="/catalog">Catalog</Link>
           </li>
           <li>
             <a href="index.html">Blog</a>
           </li>
           <li>
-            <a href="index.html">About</a>
+            <Link to="/about">About</Link>
           </li>
           <li>
             <a href="index.html">Contacts</a>

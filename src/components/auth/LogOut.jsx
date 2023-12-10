@@ -39,8 +39,8 @@ const LogOut = ({ onLogout }) => {
   return (
     <Popup trigger={<a style={{ cursor: 'pointer' }}> Logout </a>} modal>
       {(close) => (
-        <div className="auth-form-container">
-          <h3 className="darker-color">ARE YOU SURE YOU WANT TO LOGOUT?</h3>
+        <div className="form-container">
+          <h3 className="form-heading">Are you sure you want to log out?</h3>
           <button className="button-style" onClick={handleLogout}>
             Logout
           </button>
