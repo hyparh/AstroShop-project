@@ -66,9 +66,7 @@ const TelescopeDetails = ({ telescopes }) => {
       const telescopeRef = doc(db, "telescopes", id);
 
       if (telescope && user && telescope.userId === user.uid) {
-        // Validate fields before updating
         if (!validateFields(updatedTelescope)) {
-          // Display an error message or handle invalid data
           toast.error("Please fill in all fields with valid values.");
           return;
         }
@@ -86,8 +84,26 @@ const TelescopeDetails = ({ telescopes }) => {
   };
 
   const validateFields = (telescope) => {
-    // Add your validation logic here
-    // For example, check if required fields are filled and data is valid
+    if (
+      !telescope.type.trim() ||
+      !telescope.buildType.trim() ||
+      !telescope.mountingType.trim() ||
+      !telescope.gotoControl.trim() ||
+      !telescope.image.trim() ||
+      !telescope.condition.trim() ||
+      !telescope.exploitation.trim() ||
+      !telescope.description.trim()
+    ) {
+      return false;
+    }
+    if (
+      isNaN(Number(telescope.aperture)) ||
+      isNaN(Number(telescope.price)) ||
+      Number(telescope.aperture) <= 0 ||
+      Number(telescope.price) <= 0
+    ) {
+      return false;
+    }
     return (
       telescope.type.trim() !== "" &&
       telescope.buildType.trim() !== "" &&
@@ -325,7 +341,7 @@ const TelescopeDetails = ({ telescopes }) => {
           Cancel
         </button>
       </Popup>
-      <Link to="/" className="button-style">
+      <Link to="/catalog" className="button-style">
         Close
       </Link>
     </div>
