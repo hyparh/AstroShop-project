@@ -64,6 +64,24 @@
   opacity: 0.7;
 }
 
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white; /* Set the text color */
+}
+
+.overlay h1 {
+  margin: 0; /* Remove default margin for h1 */
+  margin-bottom: 100px; /* Adjust the margin bottom to move it down */
+}
+
+.overlay h1 {
+  margin: 0; /* Remove default margin for h1 */
+}
+
 /* Authentication */
 
 .form-container {
@@ -90,6 +108,7 @@
   font-size: 1.6rem;
   font-weight: 600;
   color: #1b2430;
+  font-family: sans-serif;
 }
 
 .button-style {
@@ -110,4 +129,37 @@
 .button-style:hover {
   background-color: #666666;
   color: #ff8000;
+}
+
+/* Carousel */
+
+.slider-container {
+  display: flex;
+  align-items: center;
+}
+
+.slider-container img {
+  margin-left: 650px;
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+}
+
+.slider-text {
+  margin-left: 860px;
+}
+
+.slider-text h3 {
+  margin: 0;
+}
+
+/* Featured Telescopes */
+
+.featured-telescopes {
+
+}
+
+.featured-telescopes-img {
+  width: 300px;
+  height: 300px;
 }

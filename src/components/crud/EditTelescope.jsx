@@ -86,7 +86,7 @@ export default EditTelescope = () => {
             onChange={handleInputChange}
           />
         </label>
-        <button type="button" onClick={handleEditTelescope}>
+        <button className="button-style" type="button" onClick={handleEditTelescope}>
           Save Changes
         </button>
       </form>

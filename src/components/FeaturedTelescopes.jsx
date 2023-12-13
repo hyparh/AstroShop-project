@@ -21,7 +21,7 @@ export default function FeaturedTelescopes() {
   }, []);
 
   return (
-    <section id="featured-telescopes" className="featured-telescopes">
+    <section className="form-container">
       <div className="container">
         <div className="section-header">
           <p>
@@ -35,8 +35,8 @@ export default function FeaturedTelescopes() {
               <div key={telescope.id} className="">
                 <div className="single-featured-telescopes">
                   <div className="featured-img-box">
-                    <div className="featured-telescopes-img">
-                      <img src={telescope.image} alt="telescope" />
+                    <div className="">
+                      <img className="featured-telescopes-img" src={telescope.image} alt="telescope" />
                     </div>
                     <div className="featured-model-info">
                       <p>
@@ -54,7 +54,7 @@ export default function FeaturedTelescopes() {
                         to={`/telescopes/${telescope.id}`}
                         className="button-style"
                       >
-                        <button>View Details</button>
+                        <button className="button-style">View Details</button>
                       </Link>
                     </h2>
                     <h3>${telescope.price}</h3>

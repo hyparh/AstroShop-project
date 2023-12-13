@@ -5,8 +5,18 @@ import { auth } from "../firebase";
 import { toast } from "react-toastify";
 import { doc, deleteDoc, updateDoc } from "firebase/firestore";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import {
+  telescopeTypes,
+  buildTypes,
+  mountingTypes,
+  gotoControls,
+} from "./crud/Constants";
 
 const TelescopeDetails = ({ telescopes }) => {
+  const [editType, setEditType] = useState("");
+  const [editBuildType, setEditBuildType] = useState("");
+  const [editMountingType, setEditMountingType] = useState("");
+  const [editGotoControls, setEditGotoControls] = useState("");
   const { id } = useParams();
   const telescope = telescopes.find((t) => t.id === id);
   const history = useNavigate();
@@ -14,10 +24,16 @@ const TelescopeDetails = ({ telescopes }) => {
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const [showEditPopup, setShowEditPopup] = useState(false);
   const [updatedTelescope, setUpdatedTelescope] = useState({
-    type: "",
-    aperture: 0,
-    description: "",
-    price: 0,
+    type: telescope.type,
+    buildType: telescope.buildType,
+    mountingType: telescope.mounting,
+    gotoControl: telescope.gotoControl,
+    image: telescope.image,
+    aperture: telescope.aperture,
+    condition: telescope.condition,
+    exploitation: telescope.exploitation,
+    price: telescope.price,
+    description: telescope.description,
   });
 
   useEffect(() => {
@@ -64,10 +80,42 @@ const TelescopeDetails = ({ telescopes }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setUpdatedTelescope((prevTelescope) => ({
-      ...prevTelescope,
-      [name]: value,
-    }));
+
+    switch (name) {
+      case "type":
+        setEditType(value);
+        setUpdatedTelescope((prevTelescope) => ({
+          ...prevTelescope,
+          type: value,
+        }));
+        break;
+      case "buildType":
+        setEditBuildType(value);
+        setUpdatedTelescope((prevTelescope) => ({
+          ...prevTelescope,
+          buildType: value,
+        }));
+        break;
+      case "mounting":
+        setEditMountingType(value);
+        setUpdatedTelescope((prevTelescope) => ({
+          ...prevTelescope,
+          mountingType: value,
+        }));
+        break;
+      case "gotoControls":
+        setEditGotoControls(value);
+        setUpdatedTelescope((prevTelescope) => ({
+          ...prevTelescope,
+          gotoControl: value,
+        }));
+        break;
+      default:
+        setUpdatedTelescope((prevTelescope) => ({
+          ...prevTelescope,
+          [name]: value,
+        }));
+    }
   };
 
   return (
@@ -115,7 +163,7 @@ const TelescopeDetails = ({ telescopes }) => {
       )}
       <Popup open={showDeleteConfirmation} closeOnDocumentClick={false}>
         <div className="form-container">
-          <p className="darker-color">
+          <p className="form-heading">
             Are you sure you want to delete this telescope?
           </p>
           <button onClick={handleDelete} className="button-style">
@@ -130,17 +178,67 @@ const TelescopeDetails = ({ telescopes }) => {
         </div>
       </Popup>
       <Popup open={showEditPopup} closeOnDocumentClick={false}>
-        {/* Your edit telescope form or component goes here */}
-        {/* Pass handleEdit function to your edit form */}
         <div className="form-container">
           <h2>Edit Telescope</h2>
           <form>
+            <select name="type" value={updatedTelescope.type} onChange={handleInputChange}>
+              <option value="" disabled>
+                Select Type
+              </option>
+              {telescopeTypes.map((type) => (
+                <option key={type} value={type}>
+                  {type}
+                </option>
+              ))}
+            </select>
+            <select
+              name="buildType"
+              value={updatedTelescope.buildType}
+              onChange={handleInputChange}
+            >
+              <option value="" disabled>
+                Select Build Type
+              </option>
+              {buildTypes.map((buildType) => (
+                <option key={buildType} value={buildType}>
+                  {buildType}
+                </option>
+              ))}
+            </select>
+            <select
+              name="mountingType"
+              value={updatedTelescope.mountingType}
+              onChange={handleInputChange}
+            >
+              <option value="" disabled>
+                Select Mounting Type
+              </option>
+              {mountingTypes.map((mountingType) => (
+                <option key={mountingType} value={mountingType}>
+                  {mountingType}
+                </option>
+              ))}
+            </select>
+            <select
+              name="gotoControl"
+              value={updatedTelescope.gotoControl}
+              onChange={handleInputChange}
+            >
+              <option value="" disabled>
+                Select GoTo Control
+              </option>
+              {gotoControls.map((gotoControl) => (
+                <option key={gotoControl} value={gotoControl}>
+                  {gotoControl}
+                </option>
+              ))}
+            </select>
             <label>
-              Type:
+              Image URL or file path:
               <input
                 type="text"
-                name="type"
-                value={updatedTelescope.type}
+                name="image"
+                value={updatedTelescope.image}
                 onChange={handleInputChange}
               />
             </label>
@@ -154,10 +252,19 @@ const TelescopeDetails = ({ telescopes }) => {
               />
             </label>
             <label>
-              Description:
+              Condition:
+              <input
+                type="text"
+                name="condition"
+                value={updatedTelescope.condition}
+                onChange={handleInputChange}
+              />
+            </label>
+            <label>
+              Exploitation period:
               <textarea
-                name="description"
-                value={updatedTelescope.description}
+                name="exploitation"
+                value={updatedTelescope.exploitation}
                 onChange={handleInputChange}
               />
             </label>
@@ -167,6 +274,14 @@ const TelescopeDetails = ({ telescopes }) => {
                 type="number"
                 name="price"
                 value={updatedTelescope.price}
+                onChange={handleInputChange}
+              />
+            </label>
+            <label>
+              Description:
+              <textarea
+                name="description"
+                value={updatedTelescope.description}
                 onChange={handleInputChange}
               />
             </label>

@@ -2,14 +2,14 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import Popup from "reactjs-popup";
 import { db, auth } from "../../firebase";
-import { collection, addDoc, deleteDoc, doc } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import {
   telescopeTypes,
   buildTypes,
   mountingTypes,
   gotoControls,
 } from "./Constants";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateTelescope() {
   const history = useNavigate();

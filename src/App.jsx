@@ -1,10 +1,7 @@
 import { db } from "./firebase";
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import {
-  collection,
-  getDocs
-} from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import Brand from "./components/Brand";
 import Footer from "./components/Footer";
 import Navigation from "./components/Navigation";
@@ -44,10 +41,17 @@ export default function App() {
   return (
     <Router>
       <Navigation />
-      <div className="bg"></div>
+      {location.pathname === "/" && (
+        <div className="bg">
+          <div class="overlay">
+            <h1>Get your second hand telescope in reasonable price</h1>
+            <h2>Europe's largest astronomy equipment retailer</h2>
+          </div>
+        </div>
+      )}
 
       <ToastContainer
-        position="bottom-center"
+        position="top-center"
         transition={Slide}
         autoClose={2500}
         hideProgressBar={false}
@@ -61,7 +65,10 @@ export default function App() {
       />
 
       <Routes>
-        <Route path="/telescopes/:id" element={<TelescopeDetails telescopes={telescopes} />} />
+        <Route
+          path="/telescopes/:id"
+          element={<TelescopeDetails telescopes={telescopes} />}
+        />
         <Route path="/about" element={<About />} />
         <Route path="/catalog" element={<FeaturedTelescopes />} />
       </Routes>

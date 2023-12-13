@@ -1,6 +1,6 @@
 import "../App.css";
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import LogIn from "./auth/LogIn";
 import Register from "./auth/Register";
 import CreateTelescope from "./crud/CreateTelescope";
@@ -42,9 +42,9 @@ const Navigation = () => {
       <div>
         <ul id="navbar">
           <li>
-            <a className="active" href="index.html">
+            <Link to="/" className="active">
               Home
-            </a>
+            </Link>
           </li>
           {user ? (
             <>

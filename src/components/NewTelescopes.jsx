@@ -34,12 +34,14 @@ export default function NewTelescopes() {
 
   return (
     <Slider {...settings}>
-      {newTelescopes.map((telescope) => (
+      {newTelescopes.slice(-3).map((telescope) => (
         <div className="slider-container">
           <img src={telescope.image} alt="img" />
-          <h3>{telescope.type}</h3>
-          <h3>{telescope.mountingType}</h3>
-          <h3>$ {telescope.price}</h3>
+          <div className="slider-text">
+            <h3>{telescope.type}</h3>
+            <h3>{telescope.mountingType}</h3>
+            <h3>$ {telescope.price}</h3>
+          </div>
         </div>
       ))}
     </Slider>
