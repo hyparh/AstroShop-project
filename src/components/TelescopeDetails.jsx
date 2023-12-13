@@ -26,7 +26,7 @@ const TelescopeDetails = ({ telescopes }) => {
   const [updatedTelescope, setUpdatedTelescope] = useState({
     type: telescope.type,
     buildType: telescope.buildType,
-    mountingType: telescope.mounting,
+    mountingType: telescope.mountingType,
     gotoControl: telescope.gotoControl,
     image: telescope.image,
     aperture: telescope.aperture,
@@ -66,6 +66,13 @@ const TelescopeDetails = ({ telescopes }) => {
       const telescopeRef = doc(db, "telescopes", id);
 
       if (telescope && user && telescope.userId === user.uid) {
+        // Validate fields before updating
+        if (!validateFields(updatedTelescope)) {
+          // Display an error message or handle invalid data
+          toast.error("Please fill in all fields with valid values.");
+          return;
+        }
+
         await updateDoc(telescopeRef, updatedTelescope);
 
         toast.success("Telescope successfully updated!");
@@ -76,6 +83,23 @@ const TelescopeDetails = ({ telescopes }) => {
     } catch (error) {
       toast.error("Error updating telescope:", error.message);
     }
+  };
+
+  const validateFields = (telescope) => {
+    // Add your validation logic here
+    // For example, check if required fields are filled and data is valid
+    return (
+      telescope.type.trim() !== "" &&
+      telescope.buildType.trim() !== "" &&
+      telescope.mountingType.trim() !== "" &&
+      telescope.gotoControl.trim() !== "" &&
+      telescope.image.trim() !== "" &&
+      !isNaN(Number(telescope.aperture)) &&
+      telescope.condition.trim() !== "" &&
+      telescope.exploitation.trim() !== "" &&
+      !isNaN(Number(telescope.price)) &&
+      telescope.description.trim() !== ""
+    );
   };
 
   const handleInputChange = (e) => {
@@ -96,7 +120,7 @@ const TelescopeDetails = ({ telescopes }) => {
           buildType: value,
         }));
         break;
-      case "mounting":
+      case "mountingType":
         setEditMountingType(value);
         setUpdatedTelescope((prevTelescope) => ({
           ...prevTelescope,
@@ -181,7 +205,11 @@ const TelescopeDetails = ({ telescopes }) => {
         <div className="form-container">
           <h2>Edit Telescope</h2>
           <form>
-            <select name="type" value={updatedTelescope.type} onChange={handleInputChange}>
+            <select
+              name="type"
+              value={updatedTelescope.type}
+              onChange={handleInputChange}
+            >
               <option value="" disabled>
                 Select Type
               </option>

@@ -10,6 +10,7 @@ import {
   gotoControls,
 } from "./Constants";
 import { useNavigate } from "react-router-dom";
+import TelescopeDetails from "../TelescopeDetails";
 
 export default function CreateTelescope() {
   const history = useNavigate();
@@ -23,6 +24,7 @@ export default function CreateTelescope() {
   const [newPrice, setNewPrice] = useState(0);
   const [newCondition, setNewCondition] = useState("");
   const [newExploitation, setNewExploitation] = useState("");
+  const [telescopes, setTelescopes] = useState([]);
   const telescopesCollectionRef = collection(db, "telescopes");
 
   const createTelescopes = async () => {
@@ -74,7 +76,7 @@ export default function CreateTelescope() {
   };
 
   return (
-    <Popup trigger={<a style={{ cursor: 'pointer' }}> Create </a>} modal>
+    <Popup trigger={<a style={{ cursor: "pointer" }}> Create </a>} modal>
       {(close) => (
         <div className="form-container">
           <label className="form-heading" for="email">
@@ -187,6 +189,11 @@ export default function CreateTelescope() {
           <button className="button-style" onClick={close}>
             Close
           </button>
+          <div>
+            {/* ... (other code) */}
+            <TelescopeDetails telescopes={telescopes} />{" "}
+            {/* Pass telescopes as a prop */}
+          </div>
         </div>
       )}
     </Popup>
