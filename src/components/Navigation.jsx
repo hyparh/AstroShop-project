@@ -10,7 +10,6 @@ const Navigation = () => {
   const [user, setUser] = useState(null);
   const [userDisplayEmail, setUserDisplayEmail] = useState("");
 
-  //check for user data in localStorage on component mount
   useEffect(() => {
     const storedUserData = JSON.parse(localStorage.getItem("userData"));
 
@@ -75,6 +74,9 @@ const Navigation = () => {
           )}
           <li>
             <Link to="/catalog">Catalog</Link>
+          </li>
+          <li>
+            <Link to="/search">Search</Link>
           </li>
           <li>
             <a href="index.html">Blog</a>

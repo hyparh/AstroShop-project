@@ -21,7 +21,7 @@ export default function FeaturedTelescopes() {
   }, []);
 
   return (
-    <section className="form-container">
+    <section className="catalog-container">
       <div className="container">
         <div className="section-header">
           <p>
@@ -52,9 +52,9 @@ export default function FeaturedTelescopes() {
                       <a href="#">{telescope.buildType}</a>
                       <Link
                         to={`/telescopes/${telescope.id}`}
-                        className="button-style"
+                        className=""
                       >
-                        <button className="button-style">View Details</button>
+                        <button className="view-details-button">View Details</button>
                       </Link>
                     </h2>
                     <h3>${telescope.price}</h3>

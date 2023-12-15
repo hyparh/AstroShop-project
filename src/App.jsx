@@ -5,7 +5,6 @@ import { collection, getDocs } from "firebase/firestore";
 import Brand from "./components/Brand";
 import Footer from "./components/Footer";
 import Navigation from "./components/Navigation";
-import OurServices from "./components/OurServices";
 import NewTelescopes from "./components/NewTelescopes";
 import TelescopeDetails from "./components/TelescopeDetails";
 import FeaturedTelescopes from "./components/FeaturedTelescopes";
@@ -13,8 +12,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Slide } from "react-toastify";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
-import LogIn from "./components/auth/LogIn";
 import About from "./components/About";
+import TelescopeCard from "./components/partials/TelescopeCard";
 
 export default function App() {
   const [telescopes, setDetailsTelescopes] = useState([]);
@@ -49,6 +48,7 @@ export default function App() {
           </div>
         </div>
       )}
+      <TelescopeCard />
 
       <ToastContainer
         position="top-center"

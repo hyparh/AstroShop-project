@@ -159,7 +159,7 @@ const TelescopeDetails = ({ telescopes }) => {
   };
 
   return (
-    <div className="create-form-container" style={{ marginTop: "200px" }}>
+    <div className="details-form-container">
       <img src={telescope.image} alt="Telescope" />
       <p className="darker-color" style={{ textAlign: "left" }}>
         Type: {telescope.type}
@@ -331,9 +331,9 @@ const TelescopeDetails = ({ telescopes }) => {
             </label>
           </form>
         </div>
-        <button onClick={handleEdit} className="button-style">
+        <Link to="/catalog" onClick={handleEdit} className="button-style">
           Save
-        </button>
+        </Link>
         <button
           onClick={() => setShowDeleteConfirmation(false)}
           className="button-style"

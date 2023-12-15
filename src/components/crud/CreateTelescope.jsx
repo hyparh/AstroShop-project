@@ -2,6 +2,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import Popup from "reactjs-popup";
 import { db, auth } from "../../firebase";
+import { Link } from "react-router-dom";
 import { collection, addDoc } from "firebase/firestore";
 import {
   telescopeTypes,
@@ -10,10 +11,9 @@ import {
   gotoControls,
 } from "./Constants";
 import { useNavigate } from "react-router-dom";
-import TelescopeDetails from "../TelescopeDetails";
 
 export default function CreateTelescope() {
-  const history = useNavigate();
+  const navigate = useNavigate();
   const [newType, setNewType] = useState("");
   const [newBuildType, setNewBuildType] = useState("");
   const [newMountingType, setNewMountingType] = useState("");
@@ -56,7 +56,9 @@ export default function CreateTelescope() {
           !newExploitation ||
           !isNaN(Number(newImage)) ||
           isNaN(Number(newAperture)) ||
-          isNaN(Number(newPrice))
+          isNaN(Number(newPrice)) ||
+          newAperture <= 0 ||
+          newPrice <= 0
         ) {
           toast.error("Please fill in all fields with valid values");
           return;
@@ -66,7 +68,7 @@ export default function CreateTelescope() {
         console.log(docRef);
 
         toast.success("Telescope successfully created!");
-        history("/");
+        navigate("/");
       } catch (error) {
         toast.error("Error creating telescope:", error.message);
       }
@@ -179,21 +181,17 @@ export default function CreateTelescope() {
               setNewDescription(event.target.value);
             }}
           ></textarea>
-          <button
+          <Link
+            to="/"
             className="button-style"
             onClick={createTelescopes}
             type="submit"
           >
             Create Telescope
-          </button>
+          </Link>
           <button className="button-style" onClick={close}>
             Close
           </button>
-          <div>
-            {/* ... (other code) */}
-            <TelescopeDetails telescopes={telescopes} />{" "}
-            {/* Pass telescopes as a prop */}
-          </div>
         </div>
       )}
     </Popup>
