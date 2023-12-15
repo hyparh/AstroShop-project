@@ -44,6 +44,7 @@ export default function CreateTelescope() {
           condition: newCondition,
           exploitation: newExploitation,
           userId: user.uid,
+          boughtBy: []
         };
 
         if (

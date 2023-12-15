@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { db } from "../../firebase";
+import { db, auth } from "../../firebase";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { collection, getDocs } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  getDoc,
+  updateDoc,
+  doc,
+} from "firebase/firestore";
 
 export default function TelescopeCard() {
+  const user = auth.currentUser;
   const [telescopes, setTelescopes] = useState([]);
   const [selectedTelescope, setSelectedTelescope] = useState(null);
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -30,6 +37,54 @@ export default function TelescopeCard() {
       (telescope) => telescope.id === telescopeId
     );
     setSelectedTelescope(selectedTelescope);
+  };
+
+  const handleBuy = async (telescopeId) => {
+    const telescopeRef = doc(db, "telescopes", telescopeId);
+    const telescopeDoc = await getDoc(telescopeRef);
+
+    if (telescopeDoc.exists()) {
+      const telescopeData = telescopeDoc.data();
+
+      if (!telescopeData.boughtBy.includes(user.email)) {
+        const updatedBuyers = [...telescopeData.boughtBy, user.email];
+
+        await updateDoc(telescopeRef, {
+          boughtBy: updatedBuyers,
+        });
+
+        toast.success("Telescope successfully bought!");
+      } else {
+        toast.info("You already own this telescope.");
+      }
+    } else {
+      toast.error("Telescope not found.");
+    }
+  };
+
+  if (user) {
+    console.log(user.email);
+  }
+
+  const renderBuyButton = (telescopeId) => {
+    const telescope = telescopes.find((t) => t.id === telescopeId);
+
+    if (user) {
+      if (telescope.boughtBy && telescope.boughtBy.includes(user.email)) {
+        return <p>You already bought this telescope</p>;
+      }
+    }
+
+    if (user && user.uid !== telescope.userId) {
+      return (
+        <button
+          className="view-details-button"
+          onClick={() => handleBuy(telescopeId)}
+        >
+          Buy
+        </button>
+      );
+    }
   };
 
   const handleSearch = () => {
@@ -73,6 +128,7 @@ export default function TelescopeCard() {
             >
               <button className="view-details-button">View Details</button>
             </Link>
+            {renderBuyButton(telescope.id, telescope.userId)}
           </h2>
         </div>
       ))}
