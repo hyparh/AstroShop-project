@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import Popup from "reactjs-popup";
 import { db, auth } from "../../firebase";
 import { Link } from "react-router-dom";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 import {
   telescopeTypes,
   buildTypes,
@@ -44,7 +44,7 @@ export default function CreateTelescope() {
           condition: newCondition,
           exploitation: newExploitation,
           userId: user.uid,
-          boughtBy: []
+          boughtBy: [],
         };
 
         if (
@@ -69,6 +69,12 @@ export default function CreateTelescope() {
         console.log(docRef);
 
         toast.success("Telescope successfully created!");
+
+        //fetch and update telescopes after creating a new telescope
+        const updatedTelescopesData = await fetchTelescopes();
+        setTelescopes(updatedTelescopesData);
+        setFilteredTelescopes(updatedTelescopesData);
+
         navigate("/");
       } catch (error) {
         toast.error("Error creating telescope:", error.message);

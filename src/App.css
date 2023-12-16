@@ -164,7 +164,7 @@
   height: 300px;
 }
 
-/* Catalog (FeaturedTelescopes) */
+/* Catalog */
 
 .catalog-container {
   background-color: #b3754d;
@@ -179,7 +179,6 @@
 
 .view-details-button {
   text-decoration: none;
-  margin-top: 4rem;
   display: inline-block;
   border: none;
   font-weight: bold;
@@ -261,6 +260,19 @@
 
 .telescope-card .card-text {
   color: hsl(0, 0%, 30%);
+}
+
+.telescope-card .bought-text {
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+  font-weight: bold;
+  font-size: small;
+  background-color: #ff8000;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  margin-right: 10px;
 }
 
 /* Telescope Details */

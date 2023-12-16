@@ -3,8 +3,11 @@ import Popup from "reactjs-popup";
 import { auth } from "../../firebase";
 import { toast } from "react-toastify";
 import { signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const LogOut = ({ onLogout }) => {
+  const navigate = useNavigate();
+
   const handleLogout = async () => {
     try {
       await signOut(auth);
@@ -21,6 +24,7 @@ const LogOut = ({ onLogout }) => {
         progress: undefined,
         theme: "light",
       });
+      navigate("/");
     } catch (error) {
       toast.error(`Logout failed: ${error.message}`, {
         position: "top-center",

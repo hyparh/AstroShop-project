@@ -3,8 +3,11 @@ import Popup from "reactjs-popup";
 import { auth } from "../../firebase";
 import { toast } from "react-toastify";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const LogIn = ({ onLogin }) => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginSuccess, setLoginSuccess] = useState(false);
@@ -23,6 +26,7 @@ const LogIn = ({ onLogin }) => {
         }
 
         toast.success("Login successful!");
+        navigate("/");
       })
       .catch((error) => {
         toast.error(`Login failed: ${error.message}`);

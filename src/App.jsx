@@ -2,17 +2,16 @@ import { db } from "./firebase";
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
-import Brand from "./components/Brand";
 import Footer from "./components/Footer";
 import Navigation from "./components/Navigation";
 import NewTelescopes from "./components/NewTelescopes";
 import TelescopeDetails from "./components/TelescopeDetails";
-import FeaturedTelescopes from "./components/FeaturedTelescopes";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Slide } from "react-toastify";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import About from "./components/About";
+import Home from "./components/Home";
 import TelescopeCard from "./components/partials/TelescopeCard";
 
 export default function App() {
@@ -40,15 +39,6 @@ export default function App() {
   return (
     <Router>
       <Navigation />
-      {location.pathname === "/" && (
-        <div className="bg">
-          <div class="overlay">
-            <h1>Get your second hand telescope in reasonable price</h1>
-            <h2>Europe's largest astronomy equipment retailer</h2>
-          </div>
-        </div>
-      )}
-      <TelescopeCard />
 
       <ToastContainer
         position="top-center"
@@ -65,15 +55,15 @@ export default function App() {
       />
 
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route
           path="/telescopes/:id"
           element={<TelescopeDetails telescopes={telescopes} />}
         />
+        <Route path="/catalog" element={<TelescopeCard />} />
         <Route path="/about" element={<About />} />
-        <Route path="/catalog" element={<FeaturedTelescopes />} />
       </Routes>
       <NewTelescopes />
-      <Brand />
 
       <Footer />
     </Router>

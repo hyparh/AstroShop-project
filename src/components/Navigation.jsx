@@ -76,12 +76,6 @@ const Navigation = () => {
             <Link to="/catalog">Catalog</Link>
           </li>
           <li>
-            <Link to="/search">Search</Link>
-          </li>
-          <li>
-            <a href="index.html">Blog</a>
-          </li>
-          <li>
             <Link to="/about">About</Link>
           </li>
           <li>

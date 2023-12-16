@@ -9,6 +9,7 @@ import {
   updateDoc,
   doc,
 } from "firebase/firestore";
+// import Popup from "reactjs-popup";
 
 export default function TelescopeCard() {
   const user = auth.currentUser;
@@ -16,6 +17,7 @@ export default function TelescopeCard() {
   const [selectedTelescope, setSelectedTelescope] = useState(null);
   const [searchKeyword, setSearchKeyword] = useState("");
   const [filteredTelescopes, setFilteredTelescopes] = useState([]);
+  // const [showConfirmBuyPopup, setShowConfirmBuyPopup] = useState(false);
 
   useEffect(() => {
     const fetchTelescopes = async () => {
@@ -54,6 +56,20 @@ export default function TelescopeCard() {
         });
 
         toast.success("Telescope successfully bought!");
+
+        //refetch telescopes after successful purchase
+        const updatedTelescopesSnapshot = await getDocs(
+          collection(db, "telescopes")
+        );
+        const updatedTelescopesData = updatedTelescopesSnapshot.docs.map(
+          (doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          })
+        );
+
+        setTelescopes(updatedTelescopesData);
+        setFilteredTelescopes(updatedTelescopesData);
       } else {
         toast.info("You already own this telescope.");
       }
@@ -61,6 +77,14 @@ export default function TelescopeCard() {
       toast.error("Telescope not found.");
     }
   };
+
+  // const openConfirmBuyPopup = () => {
+  //   setShowConfirmBuyPopup(true);
+  // };
+
+  // const closeConfirmBuyPopup = () => {
+  //   setShowConfirmBuyPopup(false);
+  // };
 
   if (user) {
     console.log(user.email);
@@ -71,7 +95,7 @@ export default function TelescopeCard() {
 
     if (user) {
       if (telescope.boughtBy && telescope.boughtBy.includes(user.email)) {
-        return <p>You already bought this telescope</p>;
+        return <p className="bought-text">You already own this telescope</p>;
       }
     }
 
@@ -121,15 +145,27 @@ export default function TelescopeCard() {
           <h4 className="card-title">Build Type: {telescope.buildType}</h4>
           <p className="card-text">Aperture: {telescope.aperture} mm</p>
           <h3>${telescope.price}</h3>
-          <h2>
-            <Link
-              to={`/telescopes/${telescope.id}`}
-              onClick={() => handleViewDetails(telescope.id)}
-            >
-              <button className="view-details-button">View Details</button>
-            </Link>
-            {renderBuyButton(telescope.id, telescope.userId)}
-          </h2>
+          <Link
+            to={`/telescopes/${telescope.id}`}
+            onClick={() => handleViewDetails(telescope.id)}
+          >
+            <button className="view-details-button">View Details</button>
+          </Link>
+          {renderBuyButton(telescope.id, telescope.userId)}
+          {/* Show the confirmation Popup */}
+          {/* <Popup
+            open={showConfirmBuyPopup}
+            closeOnDocumentClick
+            onClose={closeConfirmBuyPopup}
+          >
+            <div>
+              <p>Are you sure you want to buy this telescope?</p>
+              <button onClick={closeConfirmBuyPopup}>No</button>
+              <button onClick={() => handleBuy(telescopeId)}>
+                Yes
+              </button>
+            </div>
+          </Popup> */}
         </div>
       ))}
     </div>
