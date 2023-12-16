@@ -10,7 +10,7 @@ import {
   buildTypes,
   mountingTypes,
   gotoControls,
-} from "./crud/Constants";
+} from "./Constants";
 
 const TelescopeDetails = ({ telescopes }) => {
   const [editType, setEditType] = useState("");
@@ -160,33 +160,33 @@ const TelescopeDetails = ({ telescopes }) => {
 
   return (
     <div className="details-form-container">
-      <img src={telescope.image} alt="Telescope" />
+      <img className="details-image" src={telescope.image} alt="Telescope" />
       <p className="darker-color" style={{ textAlign: "left" }}>
-        Type: {telescope.type}
+        Type: <span className="details-span">{telescope.type}</span>
       </p>
       <p className="darker-color" style={{ textAlign: "left" }}>
-        Mounting type: {telescope.mountingType}
+        Mounting type: <span className="details-span">{telescope.mountingType}</span>
       </p>
       <p className="darker-color" style={{ textAlign: "left" }}>
-        Build type: {telescope.buildType}
+        Build type: <span className="details-span">{telescope.buildType}</span>
       </p>
       <p className="darker-color" style={{ textAlign: "left" }}>
-        Goto control: {telescope.gotoControl}
+        Goto control: <span className="details-span">{telescope.gotoControl}</span>
       </p>
       <p className="darker-color" style={{ textAlign: "left" }}>
-        Aperture: {telescope.aperture} mm
+        Aperture: <span className="details-span">{telescope.aperture} mm</span>
       </p>
       <p className="darker-color" style={{ textAlign: "left" }}>
-        Condition: {telescope.condition}
+        Condition: <span className="details-span">{telescope.condition}</span>
       </p>
       <p className="darker-color" style={{ textAlign: "left" }}>
-        Exploitation: {telescope.exploitation}
+        Exploitation: <span className="details-span">{telescope.exploitation}</span>
       </p>
       <p className="darker-color" style={{ textAlign: "left" }}>
-        Description: {telescope.description}
+        Description: <span className="details-span">{telescope.description}</span>
       </p>
       <p className="darker-color" style={{ textAlign: "left" }}>
-        Price: ${telescope.price}
+        Price: $<span className="details-span">{telescope.price}</span>
       </p>
       {user && telescope && telescope.userId === user.uid && (
         <button onClick={() => setShowEditPopup(true)} className="button-style">

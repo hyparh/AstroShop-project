@@ -1,5 +1,6 @@
 #root {
   font-family: sans-serif;
+  background-image: url(./images/wallpaper.jpg);
 }
 
 /* Navigation */
@@ -61,7 +62,6 @@
   height: 500px;
   width: 1904px;
   background-size: cover;
-  opacity: 0.7;
 }
 
 .overlay {
@@ -86,7 +86,7 @@
 
 .form-container {
   background-color: #b3754d;
-  padding: 5rem;
+  padding: 2rem;
   border: 2px solid #1b2430;
   border-radius: 10px;
   margin: 0.5rem;
@@ -109,11 +109,12 @@
   font-weight: 600;
   color: #1b2430;
   font-family: sans-serif;
+  display: flex;
 }
 
 .button-style {
   text-decoration: none;
-  margin-top: 4rem;
+  margin-top: 1rem;
   display: inline-block;
   border: none;
   font-weight: bold;
@@ -135,11 +136,14 @@
 /* Carousel */
 
 .slider-container {
+  background-color: #fce9b6;
   display: flex;
   align-items: center;
 }
 
 .slider-container img {
+  border: 2px solid #ff8000;
+  border-radius: 20px;
   margin-left: 650px;
   width: 500px;
   height: 500px;
@@ -242,6 +246,10 @@
   transition: transform 0.3s ease-in-out;
 }
 
+.search-form {
+
+}
+
 .telescope-card:hover {
   transform: scale(1.05);
 }
@@ -280,13 +288,21 @@
 .details-form-container {
   margin-left: 300px;
   background-color: #b3754d;
-  padding: 5rem;
+  padding: 2rem;
   border: 2px solid #1b2430;
   border-radius: 10px;
   margin: 0.5rem;
   box-shadow: 0 0 0 100000px rgba(0, 0, 0, 0.5);
   text-align: center;
-  max-width: 250px;
+  max-width: 500px;
+  display: block;
+  margin: auto;
+}
+
+.details-image {
+  border-radius: 10px;
+  max-height: 500px;
+  max-width: 500px;
 }
 
 .details-form-container label,
@@ -303,6 +319,10 @@
   font-weight: 600;
   color: #1b2430;
   font-family: sans-serif;
+}
+
+.details-form-container span {
+  font-weight: bold;
 }
 
 .details-button-style {
@@ -324,4 +344,58 @@
 .details-button-style:hover {
   background-color: #666666;
   color: #ff8000;
+}
+
+/* About & Contacts */
+
+.static-form {
+  text-align: left;
+  background-color: #d3d3d3;
+  padding: 20px;
+  max-width: 800px;
+  margin: 1rem auto;
+  border-radius: 10px;
+}
+
+.static-form h2 {
+  color: #1b2430;
+  margin-left: 1rem;
+}
+
+.static-form p,
+.static-form ul {
+  color: #1b2430;
+  margin-left: 1rem;
+}
+
+.static-form ul {
+  list-style: disc;
+  padding: 0;
+}
+
+.static-form ul li {
+  margin-bottom: 10px;
+}
+
+/* Footer */
+
+.footer-form {
+  background-color: #1b2430;
+  padding: 20px;
+}
+
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-container p {
+  margin-right: 20px;
+  color: white;
+}
+
+.footer-container img {
+  margin-right: 10px;
+  max-height: 50px;
 }

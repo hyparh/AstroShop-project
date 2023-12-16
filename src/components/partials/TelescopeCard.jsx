@@ -125,7 +125,7 @@ export default function TelescopeCard() {
 
   return (
     <div>
-      <div>
+      <div className="search-form">
         <input
           type="text"
           placeholder="Search by Build Type"

@@ -35,6 +35,7 @@ const LogIn = ({ onLogin }) => {
 
   return (
     <Popup trigger={<a style={{ cursor: "pointer" }}> Login </a>} modal>
+      {(close) => (
         <div className="form-container">
           <form onSubmit={onLogIn}>
             <label className="form-heading" for="email">
@@ -55,8 +56,12 @@ const LogIn = ({ onLogin }) => {
             <button className="button-style" type="submit">
               Log In
             </button>
+            <button className="button-style" onClick={close}>
+              Cancel
+            </button>
           </form>
         </div>
+      )}
       {/* Display user's name if available */}
       {/* {userDisplayEmail && (
         <div className="user-display">Welcome, {userDisplayEmail}!</div>

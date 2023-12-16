@@ -9,11 +9,12 @@ import {
   buildTypes,
   mountingTypes,
   gotoControls,
-} from "./Constants";
+} from "../Constants";
 import { useNavigate } from "react-router-dom";
 
 export default function CreateTelescope() {
   const navigate = useNavigate();
+
   const [newType, setNewType] = useState("");
   const [newBuildType, setNewBuildType] = useState("");
   const [newMountingType, setNewMountingType] = useState("");
@@ -24,10 +25,10 @@ export default function CreateTelescope() {
   const [newPrice, setNewPrice] = useState(0);
   const [newCondition, setNewCondition] = useState("");
   const [newExploitation, setNewExploitation] = useState("");
-  const [telescopes, setTelescopes] = useState([]);
+  //const [telescopes, setTelescopes] = useState([]);
   const telescopesCollectionRef = collection(db, "telescopes");
 
-  const createTelescopes = async () => {
+  const createTelescopes = async (close) => {
     const user = auth.currentUser;
 
     if (user) {
@@ -70,10 +71,19 @@ export default function CreateTelescope() {
 
         toast.success("Telescope successfully created!");
 
-        //fetch and update telescopes after creating a new telescope
-        const updatedTelescopesData = await fetchTelescopes();
-        setTelescopes(updatedTelescopesData);
-        setFilteredTelescopes(updatedTelescopesData);
+        //refetch telescopes after successful purchase
+        // const updatedTelescopesSnapshot = await getDocs(
+        //   collection(db, "telescopes")
+        // );
+        // const updatedTelescopesData = updatedTelescopesSnapshot.docs.map(
+        //   (doc) => ({
+        //     id: doc.id,
+        //     ...doc.data(),
+        //   })
+        // );
+
+        // setTelescopes(updatedTelescopesData);
+        // setFilteredTelescopes(updatedTelescopesData);
 
         navigate("/");
       } catch (error) {
