@@ -102,7 +102,7 @@ export default function TelescopeCard() {
 
     if (user && user.uid !== telescope.userId) {
       return (
-        <div>
+        <>
           <button
             className="view-details-button"
             onClick={() => setShowBuyConfirmation(true)}
@@ -114,7 +114,10 @@ export default function TelescopeCard() {
               <p className="form-heading">
                 Are you sure you want to buy this telescope?
               </p>
-              <button onClick={() => handleBuy(telescopeId)} className="button-style">
+              <button
+                onClick={() => handleBuy(telescopeId)}
+                className="button-style"
+              >
                 Yes
               </button>
               <button
@@ -125,7 +128,7 @@ export default function TelescopeCard() {
               </button>
             </div>
           </Popup>
-        </div>
+        </>
       );
     }
   };
