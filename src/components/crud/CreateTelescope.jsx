@@ -199,14 +199,16 @@ export default function CreateTelescope() {
               setNewDescription(event.target.value);
             }}
           ></textarea>
-          <Link
-            to="/"
-            className="button-style"
-            onClick={createTelescopes}
-            type="submit"
-          >
-            Create Telescope
-          </Link>
+          <button className="button-style">
+            <Link
+              to="/"
+              onClick={createTelescopes}
+              type="submit"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              Create Telescope
+            </Link>
+          </button>
           <button className="button-style" onClick={close}>
             Close
           </button>
