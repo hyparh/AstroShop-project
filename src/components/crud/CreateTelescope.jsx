@@ -85,6 +85,7 @@ export default function CreateTelescope() {
         // setTelescopes(updatedTelescopesData);
         // setFilteredTelescopes(updatedTelescopesData);
 
+        close();
         navigate("/");
       } catch (error) {
         toast.error("Error creating telescope:", error.message);

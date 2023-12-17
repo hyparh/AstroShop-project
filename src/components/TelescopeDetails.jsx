@@ -165,13 +165,15 @@ const TelescopeDetails = ({ telescopes }) => {
         Type: <span className="details-span">{telescope.type}</span>
       </p>
       <p className="darker-color" style={{ textAlign: "left" }}>
-        Mounting type: <span className="details-span">{telescope.mountingType}</span>
+        Mounting type:{" "}
+        <span className="details-span">{telescope.mountingType}</span>
       </p>
       <p className="darker-color" style={{ textAlign: "left" }}>
         Build type: <span className="details-span">{telescope.buildType}</span>
       </p>
       <p className="darker-color" style={{ textAlign: "left" }}>
-        Goto control: <span className="details-span">{telescope.gotoControl}</span>
+        Goto control:{" "}
+        <span className="details-span">{telescope.gotoControl}</span>
       </p>
       <p className="darker-color" style={{ textAlign: "left" }}>
         Aperture: <span className="details-span">{telescope.aperture} mm</span>
@@ -180,10 +182,12 @@ const TelescopeDetails = ({ telescopes }) => {
         Condition: <span className="details-span">{telescope.condition}</span>
       </p>
       <p className="darker-color" style={{ textAlign: "left" }}>
-        Exploitation: <span className="details-span">{telescope.exploitation}</span>
+        Exploitation:{" "}
+        <span className="details-span">{telescope.exploitation}</span>
       </p>
       <p className="darker-color" style={{ textAlign: "left" }}>
-        Description: <span className="details-span">{telescope.description}</span>
+        Description:{" "}
+        <span className="details-span">{telescope.description}</span>
       </p>
       <p className="darker-color" style={{ textAlign: "left" }}>
         Price: $<span className="details-span">{telescope.price}</span>
@@ -218,128 +222,139 @@ const TelescopeDetails = ({ telescopes }) => {
         </div>
       </Popup>
       <Popup open={showEditPopup} closeOnDocumentClick={false}>
-        <div className="form-container">
-          <h2>Edit Telescope</h2>
-          <form>
-            <select
-              name="type"
-              value={updatedTelescope.type}
-              onChange={handleInputChange}
-            >
-              <option value="" disabled>
-                Select Type
-              </option>
-              {telescopeTypes.map((type) => (
-                <option key={type} value={type}>
-                  {type}
+        {(close) => (
+          <div className="form-container">
+            <h2>Edit Telescope</h2>
+            <form>
+              <select
+                name="type"
+                value={updatedTelescope.type}
+                onChange={handleInputChange}
+              >
+                <option value="" disabled>
+                  Select Type
                 </option>
-              ))}
-            </select>
-            <select
-              name="buildType"
-              value={updatedTelescope.buildType}
-              onChange={handleInputChange}
-            >
-              <option value="" disabled>
-                Select Build Type
-              </option>
-              {buildTypes.map((buildType) => (
-                <option key={buildType} value={buildType}>
-                  {buildType}
+                {telescopeTypes.map((type) => (
+                  <option key={type} value={type}>
+                    {type}
+                  </option>
+                ))}
+              </select>
+              <select
+                name="buildType"
+                value={updatedTelescope.buildType}
+                onChange={handleInputChange}
+              >
+                <option value="" disabled>
+                  Select Build Type
                 </option>
-              ))}
-            </select>
-            <select
-              name="mountingType"
-              value={updatedTelescope.mountingType}
-              onChange={handleInputChange}
-            >
-              <option value="" disabled>
-                Select Mounting Type
-              </option>
-              {mountingTypes.map((mountingType) => (
-                <option key={mountingType} value={mountingType}>
-                  {mountingType}
+                {buildTypes.map((buildType) => (
+                  <option key={buildType} value={buildType}>
+                    {buildType}
+                  </option>
+                ))}
+              </select>
+              <select
+                name="mountingType"
+                value={updatedTelescope.mountingType}
+                onChange={handleInputChange}
+              >
+                <option value="" disabled>
+                  Select Mounting Type
                 </option>
-              ))}
-            </select>
-            <select
-              name="gotoControl"
-              value={updatedTelescope.gotoControl}
-              onChange={handleInputChange}
-            >
-              <option value="" disabled>
-                Select GoTo Control
-              </option>
-              {gotoControls.map((gotoControl) => (
-                <option key={gotoControl} value={gotoControl}>
-                  {gotoControl}
+                {mountingTypes.map((mountingType) => (
+                  <option key={mountingType} value={mountingType}>
+                    {mountingType}
+                  </option>
+                ))}
+              </select>
+              <select
+                name="gotoControl"
+                value={updatedTelescope.gotoControl}
+                onChange={handleInputChange}
+              >
+                <option value="" disabled>
+                  Select GoTo Control
                 </option>
-              ))}
-            </select>
-            <label>
-              Image URL or file path:
-              <input
-                type="text"
-                name="image"
-                value={updatedTelescope.image}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              Aperture:
-              <input
-                type="number"
-                name="aperture"
-                value={updatedTelescope.aperture}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              Condition:
-              <input
-                type="text"
-                name="condition"
-                value={updatedTelescope.condition}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              Exploitation period:
-              <textarea
-                name="exploitation"
-                value={updatedTelescope.exploitation}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              Price:
-              <input
-                type="number"
-                name="price"
-                value={updatedTelescope.price}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              Description:
-              <textarea
-                name="description"
-                value={updatedTelescope.description}
-                onChange={handleInputChange}
-              />
-            </label>
-          </form>
-        </div>
-        <Link to="/catalog" onClick={handleEdit} className="button-style">
-          Save
-        </Link>
-        <button
-          onClick={() => setShowDeleteConfirmation(false)}
-          className="button-style"
-        >
-          Cancel
-        </button>
+                {gotoControls.map((gotoControl) => (
+                  <option key={gotoControl} value={gotoControl}>
+                    {gotoControl}
+                  </option>
+                ))}
+              </select>
+              <label>
+                Image URL or file path:
+                <input
+                  type="text"
+                  name="image"
+                  value={updatedTelescope.image}
+                  onChange={handleInputChange}
+                />
+              </label>
+              <label>
+                Aperture:
+                <input
+                  type="number"
+                  name="aperture"
+                  value={updatedTelescope.aperture}
+                  onChange={handleInputChange}
+                />
+              </label>
+              <label>
+                Condition:
+                <input
+                  type="text"
+                  name="condition"
+                  value={updatedTelescope.condition}
+                  onChange={handleInputChange}
+                />
+              </label>
+              <label>
+                Exploitation period:
+                <textarea
+                  name="exploitation"
+                  value={updatedTelescope.exploitation}
+                  onChange={handleInputChange}
+                />
+              </label>
+              <label>
+                Price:
+                <input
+                  type="number"
+                  name="price"
+                  value={updatedTelescope.price}
+                  onChange={handleInputChange}
+                />
+              </label>
+              <label>
+                Description:
+                <textarea
+                  name="description"
+                  value={updatedTelescope.description}
+                  onChange={handleInputChange}
+                />
+              </label>
+            </form>
+            <button className="button-style">
+              <Link
+                to="/catalog"
+                onClick={handleEdit}
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                Save
+              </Link>
+            </button>
+            <button
+              onClick={() => {
+                setShowDeleteConfirmation(false);
+                close();
+              }}
+              className="button-style"
+            >
+              Cancel
+            </button>
+          </div>
+        )}
       </Popup>
       <Link to="/catalog" className="button-style">
         Close
