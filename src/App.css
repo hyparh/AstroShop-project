@@ -38,8 +38,7 @@
   color: #ff8000;
 }
 
-#navbar li a:hover::after,
-#navbar li a.active::after {
+#navbar li a:hover::after {
   content: "";
   width: 30%;
   height: 2px;
@@ -53,6 +52,7 @@
   font-size: 2rem;
   font-weight: 600;
   color: #ff8000;
+  text-decoration: none;
 }
 
 /* Background picture */
@@ -131,6 +131,10 @@
 .button-style:hover {
   background-color: #666666;
   color: #ff8000;
+}
+
+.user-email {
+  color: white;
 }
 
 /* Carousel */

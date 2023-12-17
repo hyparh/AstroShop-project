@@ -37,7 +37,9 @@ const Navigation = () => {
 
   return (
     <nav className="nav">
-      <text className="heading">Astro Shop</text>
+      <Link to="/" className="heading">
+        Astro Shop
+      </Link>
       <div>
         <ul id="navbar">
           <li>
@@ -81,6 +83,13 @@ const Navigation = () => {
           <li>
             <Link to="/contacts">Contacts</Link>
           </li>
+          {user ? (
+            <li>
+              <div className="user-email">Welcome {userDisplayEmail}</div>
+            </li>
+          ) : (
+            <></>
+          )}
         </ul>
       </div>
     </nav>

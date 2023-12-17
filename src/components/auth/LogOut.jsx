@@ -14,28 +14,10 @@ const LogOut = ({ onLogout }) => {
       if (onLogout) {
         onLogout();
       }
-      toast.success("Logout successful!", {
-        position: "top-center",
-        autoClose: 2500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.success("Logout successful!");
       navigate("/");
     } catch (error) {
-      toast.error(`Logout failed: ${error.message}`, {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.error(`Logout failed: ${error.message}`);
     }
   };
 

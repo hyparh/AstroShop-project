@@ -157,7 +157,7 @@ export default function TelescopeCard() {
             open={showConfirmBuyPopup}
             closeOnDocumentClick
             onClose={closeConfirmBuyPopup}
-          >
+            >
             <div>
               <p>Are you sure you want to buy this telescope?</p>
               <button onClick={closeConfirmBuyPopup}>No</button>
