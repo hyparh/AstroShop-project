@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Popup from "reactjs-popup";
 import { db, auth } from "../../firebase";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -17,7 +18,7 @@ export default function TelescopeCard() {
   const [selectedTelescope, setSelectedTelescope] = useState(null);
   const [searchKeyword, setSearchKeyword] = useState("");
   const [filteredTelescopes, setFilteredTelescopes] = useState([]);
-  // const [showConfirmBuyPopup, setShowConfirmBuyPopup] = useState(false);
+  const [showBuyConfirmation, setShowBuyConfirmation] = useState(false);
 
   useEffect(() => {
     const fetchTelescopes = async () => {
@@ -101,12 +102,30 @@ export default function TelescopeCard() {
 
     if (user && user.uid !== telescope.userId) {
       return (
-        <button
-          className="view-details-button"
-          onClick={() => handleBuy(telescopeId)}
-        >
-          Buy
-        </button>
+        <div>
+          <button
+            className="view-details-button"
+            onClick={() => setShowBuyConfirmation(true)}
+          >
+            Buy
+          </button>
+          <Popup open={showBuyConfirmation} closeOnDocumentClick={false}>
+            <div className="form-container">
+              <p className="form-heading">
+                Are you sure you want to buy this telescope?
+              </p>
+              <button onClick={() => handleBuy(telescopeId)} className="button-style">
+                Yes
+              </button>
+              <button
+                onClick={() => setShowBuyConfirmation(false)}
+                className="button-style"
+              >
+                No
+              </button>
+            </div>
+          </Popup>
+        </div>
       );
     }
   };
@@ -152,20 +171,6 @@ export default function TelescopeCard() {
             <button className="view-details-button">View Details</button>
           </Link>
           {renderBuyButton(telescope.id, telescope.userId)}
-          {/* Show the confirmation Popup */}
-          {/* <Popup
-            open={showConfirmBuyPopup}
-            closeOnDocumentClick
-            onClose={closeConfirmBuyPopup}
-            >
-            <div>
-              <p>Are you sure you want to buy this telescope?</p>
-              <button onClick={closeConfirmBuyPopup}>No</button>
-              <button onClick={() => handleBuy(telescopeId)}>
-                Yes
-              </button>
-            </div>
-          </Popup> */}
         </div>
       ))}
     </div>
