@@ -132,6 +132,12 @@ export default function TelescopeCard() {
     }
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   return (
     <div>
       <div className="search-form">
@@ -140,6 +146,7 @@ export default function TelescopeCard() {
           placeholder="Search by Build Type"
           value={searchKeyword}
           onChange={(e) => setSearchKeyword(e.target.value)}
+          onKeyDown={handleKeyPress}
         />
         <button onClick={handleSearch}>Search</button>
       </div>
