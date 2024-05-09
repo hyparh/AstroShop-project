@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import Slider from "react-slick";
@@ -7,6 +8,8 @@ import "slick-carousel/slick/slick-theme.css";
 
 export default function NewTelescopes() {
   const [newTelescopes, setNewTelescopes] = useState([]);
+  const [telescopes, setTelescopes] = useState([]);
+  const [selectedTelescope, setSelectedTelescope] = useState(null);
 
   useEffect(() => {
     const fetchNewTelescopes = async () => {
@@ -16,12 +19,19 @@ export default function NewTelescopes() {
         id: doc.id,
         ...doc.data(),
       }));
-
+      setTelescopes(telescopesData);
       setNewTelescopes(telescopesData);
     };
 
     fetchNewTelescopes();
   }, []);
+
+  const handleViewDetails = (telescopeId) => {
+    const selectedTelescope = telescopes.find(
+      (telescope) => telescope.id === telescopeId
+    );
+    setSelectedTelescope(selectedTelescope);
+  };
 
   const settings = {
     centerMode: true,
@@ -38,7 +48,12 @@ export default function NewTelescopes() {
     <Slider {...settings}>
       {newTelescopes.slice(-3).map((telescope) => (
         <div className="slider-container">
-          <img src={telescope.image} alt="img" />
+          <Link
+            to={`/telescopes/${telescope.id}`}
+            onClick={() => handleViewDetails(telescope.id)}
+          >
+            <img src={telescope.image} alt="img" />
+          </Link>
           <div className="slider-text">
             <h3>{telescope.type}</h3>
             <h3>{telescope.mountingType}</h3>
