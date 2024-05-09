@@ -33,6 +33,13 @@ export default function NewTelescopes() {
     setSelectedTelescope(selectedTelescope);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
+
   const settings = {
     centerMode: true,
     dots: true,
@@ -50,7 +57,7 @@ export default function NewTelescopes() {
         <div className="slider-container">
           <Link
             to={`/telescopes/${telescope.id}`}
-            onClick={() => handleViewDetails(telescope.id)}
+            onClick={() => {handleViewDetails(telescope.id); scrollToTop();}}
           >
             <img src={telescope.image} alt="img" />
           </Link>
