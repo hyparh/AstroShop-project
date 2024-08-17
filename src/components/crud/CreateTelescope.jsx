@@ -25,7 +25,6 @@ export default function CreateTelescope() {
   const [newPrice, setNewPrice] = useState(0);
   const [newCondition, setNewCondition] = useState("");
   const [newExploitation, setNewExploitation] = useState("");
-  //const [telescopes, setTelescopes] = useState([]);
   const telescopesCollectionRef = collection(db, "telescopes");
 
   const createTelescopes = async (close) => {
@@ -70,20 +69,6 @@ export default function CreateTelescope() {
         console.log(docRef);
 
         toast.success("Telescope successfully created!");
-
-        //refetch telescopes after successful purchase
-        // const updatedTelescopesSnapshot = await getDocs(
-        //   collection(db, "telescopes")
-        // );
-        // const updatedTelescopesData = updatedTelescopesSnapshot.docs.map(
-        //   (doc) => ({
-        //     id: doc.id,
-        //     ...doc.data(),
-        //   })
-        // );
-
-        // setTelescopes(updatedTelescopesData);
-        // setFilteredTelescopes(updatedTelescopesData);
 
         close();
         navigate("/");

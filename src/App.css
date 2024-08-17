@@ -140,9 +140,14 @@
 /* Carousel */
 
 .slider-container {
-  background-color: #fce9b6;
+  background-color: #fce9b6; /* Yellowish background */
   display: flex;
-  align-items: center;
+  flex-direction: column; /* Ensure content stacks vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  padding: 20px; /* Add padding if needed */
+  box-sizing: border-box; /* Include padding in height and width calculations */
+  height: 100%; /* Ensure it stretches to fill the height */
 }
 
 .slider-container img {

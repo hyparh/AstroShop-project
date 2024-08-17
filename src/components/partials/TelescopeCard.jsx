@@ -97,25 +97,6 @@ export default function TelescopeCard() {
         >
           Buy
         </button>
-        /* <Popup open={showBuyConfirmation} closeOnDocumentClick={false}>
-            <div className="form-container">
-              <p className="form-heading">
-                Are you sure you want to buy this telescope?
-              </p>
-              <button
-                onClick={() => handleBuy(telescopeId)}
-                className="button-style"
-              >
-                Yes
-              </button>
-              <button
-                onClick={() => setShowBuyConfirmation(false)}
-                className="button-style"
-              >
-                No
-              </button>
-            </div
-          </Popup> */
       );
     }
   };
