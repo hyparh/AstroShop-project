@@ -19,7 +19,7 @@ const TelescopeDetails = ({ telescopes }) => {
   const [editGotoControls, setEditGotoControls] = useState("");
   const { id } = useParams();
   const telescope = telescopes.find((t) => t.id === id);
-  const history = useNavigate();
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const [showEditPopup, setShowEditPopup] = useState(false);
@@ -52,7 +52,7 @@ const TelescopeDetails = ({ telescopes }) => {
         await deleteDoc(telescopeRef);
 
         toast.success("Telescope successfully deleted!");
-        history("/");
+        navigate("/");
       } else {
         toast.error("You don't have permission to delete this telescope.");
       }
