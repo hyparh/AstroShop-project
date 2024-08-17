@@ -9,7 +9,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
-  const onRegister = (e) => {
+  const onRegister = (e, close) => {
     e.preventDefault();
 
     if (password !== repeatPassword) {
@@ -21,6 +21,7 @@ const Register = () => {
       .then((userCredentials) => {
         console.log(userCredentials);
         toast.success("Registration successful!");
+        close();
       })
       .catch((error) => {
         toast.error(`Registration failed: ${error.message}`);
@@ -31,7 +32,7 @@ const Register = () => {
     <Popup trigger={<a style={{ cursor: "pointer" }}> Register </a>} modal>
       {(close) => (
         <div className="form-container">
-          <form onSubmit={onRegister}>
+          <form onSubmit={(e) => onRegister(e, close)}>
             <label className="form-heading">Create account</label>
             <input
               type="email"
