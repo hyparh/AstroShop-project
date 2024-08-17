@@ -18,7 +18,7 @@ const Register = () => {
     }
 
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredentials) => {
+      .then(() => {
         toast.success("Registration successful!");
         close();
       })
