@@ -346,7 +346,7 @@ const TelescopeDetails = ({ telescopes }) => {
             </button>
             <button
               onClick={() => {
-                setShowDeleteConfirmation(false);
+                setShowEditPopup(false);
                 close();
               }}
               className="button-style"
