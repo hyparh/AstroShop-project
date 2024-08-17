@@ -66,7 +66,6 @@ export default function CreateTelescope() {
         }
 
         const docRef = await addDoc(telescopesCollectionRef, newTelescope);
-        console.log(docRef);
 
         toast.success("Telescope successfully created!");
 

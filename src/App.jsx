@@ -28,7 +28,6 @@ export default function App() {
           ...doc.data(),
         }));
         setDetailsTelescopes(telescopesData);
-        console.log("Telescopes fetched:", telescopesData);
       } catch (error) {
         console.error("Error fetching telescopes:", error);
       }

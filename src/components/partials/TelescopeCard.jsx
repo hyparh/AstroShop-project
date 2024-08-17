@@ -76,10 +76,6 @@ export default function TelescopeCard() {
     }
   };
 
-  if (user) {
-    console.log(user.email);
-  }
-
   const renderBuyButton = (telescopeId) => {
     const telescope = telescopes.find((t) => t.id === telescopeId);
 
