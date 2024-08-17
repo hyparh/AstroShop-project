@@ -1,6 +1,6 @@
 import "../App.css";
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import LogIn from "./auth/LogIn";
 import Register from "./auth/Register";
 import CreateTelescope from "./crud/CreateTelescope";

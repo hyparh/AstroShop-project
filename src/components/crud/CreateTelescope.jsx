@@ -187,7 +187,7 @@ export default function CreateTelescope() {
           <button className="button-style">
             <Link
               to="/"
-              onClick={createTelescopes}
+              onClick={() => createTelescopes(close)}
               type="submit"
               style={{ textDecoration: "none", color: "inherit" }}
             >
