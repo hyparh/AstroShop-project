@@ -50,9 +50,7 @@ const Navigation = () => {
           {user ? (
             <>
               <li>
-                <a>
-                  <CreateTelescope />
-                </a>
+                <Link to="/create">Create Telescope</Link>
               </li>
               <li>
                 <a>
@@ -85,7 +83,9 @@ const Navigation = () => {
           </li>
           {user ? (
             <li>
-              <div className="user-email">Welcome {userDisplayEmail}</div>
+              <div className="user-email">
+                Welcome <strong>{userDisplayEmail}</strong>
+              </div>
             </li>
           ) : (
             <></>

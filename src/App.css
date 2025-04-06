@@ -82,6 +82,14 @@
   margin: 0; /* Remove default margin for h1 */
 }
 
+/* Create telescope */
+
+.create-telescope-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+}
+
 /* Authentication */
 
 .form-container {

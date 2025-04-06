@@ -6,6 +6,7 @@ import Footer from "./components/static/Footer";
 import Navigation from "./components/Navigation";
 import NewTelescopes from "./components/NewTelescopes";
 import TelescopeDetails from "./components/TelescopeDetails";
+import CreateTelescope from "./components/crud/CreateTelescope";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Slide } from "react-toastify";
@@ -61,6 +62,7 @@ export default function App() {
           element={<TelescopeDetails telescopes={telescopes} />}
         />
         <Route path="/catalog" element={<TelescopeCard />} />
+        <Route path="/create" element={<CreateTelescope />} />
         <Route path="/about" element={<About />} />
         <Route path="/contacts" element={<Contacts />} />
       </Routes>
