@@ -56,9 +56,7 @@ const EditTelescope = ({ telescopes }) => {
                 }
 
                 await updateDoc(telescopeRef, updatedTelescope);
-
                 toast.success("Telescope successfully updated!");
-                setShowEditPopup(false);
             } else {
                 toast.error("You don't have permission to edit this telescope.");
             }
